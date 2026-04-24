@@ -1,0 +1,64 @@
+
+RELEVAR CLIENTE - FUNCIONALIDADES A DESARROLLAR EN LO POSIBLE ENTREVISTAR CLIENTE - GRABAR AUDIO FUNDAMENTACION DEL PROYECTO
+
+RELEVAMIENTO DEL CLIENTE
+A partir de la visita a la fábrica y el contacto con los responsables de Tapisur, se realizó un relevamiento del funcionamiento actual del negocio.
+Se identificó que la gestión se realiza de forma manual o mediante herramientas no integradas, lo que genera dificultades para organizar la información. Actualmente utilizan Tienda Nube para la venta online, pero no cuentan con una herramienta que centralice pedidos, clientes y trabajos.
+El flujo de trabajo se apoya fuertemente en la comunicación por WhatsApp, siendo este el principal canal de contacto con los clientes. Si bien resulta práctico, no permite llevar un registro ordenado ni aprovechar la información generada.
+Además, se detectó la necesidad de mejorar la presencia digital del negocio, con el objetivo de atraer nuevos clientes a través de redes sociales y motores de búsqueda.
+________________________________________
+PROBLEMAS DETECTADOS
+Del relevamiento realizado se identificaron los siguientes problemas:
+•	Información distribuida en distintos medios sin centralización 
+•	Dificultad para hacer seguimiento de pedidos y trabajos 
+•	Falta de claridad sobre el estado de fabricación 
+•	Dependencia de WhatsApp sin registro estructurado 
+•	Falta de diferenciación en la gestión de clientes mayoristas y minoristas 
+•	Dificultad para obtener información clara para la toma de decisiones 
+•	Baja optimización de la presencia digital para campañas en redes sociales y Google 
+________________________________________
+FUNCIONALIDADES A DESARROLLAR
+En base a las necesidades detectadas, se definen las siguientes funcionalidades:
+Funcionalidades iniciales
+•	Login de administrador 
+•	ABM de productos 
+•	ABM de servicios 
+•	Gestión de consultas 
+•	Administración de contenido 
+•	Registro interno de clientes a partir de consultas y contactos vía WhatsApp (sin registro de usuario)
+•	Clasificación de clientes (mayorista / minorista) 
+•	Integración con WhatsApp como canal principal de contacto 
+•	Registro de interacciones (clics a WhatsApp y visitas) para análisis 
+Funcionalidades futuras
+•	Registro de pedidos 
+•	Asociación de pedidos a clientes 
+•	Seguimiento de trabajos 
+•	Gestión de presupuestos 
+•	Reportes básicos 
+•	Panel de métricas (visitas, consultas, conversiones) 
+________________________________________
+ENTREVISTA AL CLIENTE
+Dado que el relevamiento fue realizado mediante conversaciones informales y visitas al lugar, se presenta a continuación una reconstrucción de la entrevista en formato textual.
+Entrevistador: ¿A qué se dedica Tapisur y cómo trabajan actualmente?
+Cliente: Nos dedicamos a fabricar sillones a medida y hacer retapizados. Trabajamos mucho por pedido, cada cliente viene con algo distinto.
+Entrevistador: ¿Cómo manejan hoy los pedidos y las consultas?
+Cliente: Todo lo manejamos por WhatsApp. Nos escriben, pasamos precios, vemos qué quieren y vamos anotando.
+Entrevistador: ¿Qué problemas tienen con esa forma de trabajo?
+Cliente: Hoy no tenemos tantos problemas porque manejamos pocos clientes, pero sabemos que a medida que crezca el trabajo se puede volver difícil de manejar. Nos gustaría tener la información más ordenada y no depender de la memoria o de anotaciones sueltas.
+Entrevistador: ¿Tienen distintos tipos de clientes?
+Cliente: Sí, algunos son clientes comunes y otros revenden, pero no tenemos algo que los diferencie bien.
+Entrevistador: ¿Qué les gustaría mejorar?
+Cliente: Poder tener todo más ordenado, saber qué trabajos tenemos, en qué estado están y no depender tanto de buscar en el celular.
+Entrevistador: ¿Desde dónde usarían el sistema?
+Cliente: Principalmente desde el celular.
+Entrevistador: ¿Seguirían usando WhatsApp?
+Cliente: Sí, eso seguro, es lo que usamos siempre.
+________________________________________
+FUNDAMENTACIÓN DEL PROYECTO
+El proyecto se basa en una necesidad real detectada en Tapisur, donde actualmente no existe un sistema que permita gestionar de forma integrada los procesos del negocio.
+La falta de centralización de la información genera desorganización, dificulta el seguimiento de pedidos y limita la capacidad de tomar decisiones.
+A partir de esta situación, se propone el desarrollo de un sistema web que permita organizar la información, mejorar los procesos internos y brindar mayor visibilidad sobre el estado del negocio.
+La solución se plantea como un complemento a la operatoria actual, manteniendo WhatsApp como canal principal de comunicación, pero incorporando un sistema que registre, ordene y permita analizar la información.
+Además, se incorpora un enfoque orientado a mejorar la presencia digital del negocio, permitiendo utilizar la web como herramienta de captación de clientes a través de redes sociales y motores de búsqueda.
+De esta manera, el sistema no solo digitaliza procesos, sino que también aporta valor en términos de organización, análisis y crecimiento comercial, facilitando la toma de decisiones y mejorando la gestión general del emprendimiento.
+
