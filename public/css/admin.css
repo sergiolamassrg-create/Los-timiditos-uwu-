@@ -1,0 +1,143 @@
+﻿:root {
+  --bg: #f6f4ef;
+  --surface: #fff;
+  --text: #1d1f1c;
+  --muted: #5e615b;
+  --line: #d7d3c8;
+  --accent: #7d8568;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  color: var(--text);
+  background: radial-gradient(900px 500px at 100% 0, rgba(125, 133, 104, 0.12), transparent), var(--bg);
+}
+
+h1, h2, h3 {
+  margin: 0 0 0.8rem;
+  font-family: "Outfit", sans-serif;
+}
+
+.admin-wrap {
+  width: min(860px, calc(100% - 1.4rem));
+  margin: 2rem auto;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.2rem;
+  box-shadow: 0 12px 24px rgba(29, 31, 28, 0.08);
+}
+
+.eyebrow {
+  margin: 0 0 0.55rem;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+
+.form-grid h3 {
+  margin: 1rem 0 0.2rem;
+  font-size: 1.08rem;
+}
+
+label {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: #fcfcfb;
+  padding: 0.62rem 0.72rem;
+}
+
+button {
+  font: inherit;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.62rem 1rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover,
+button:focus-visible {
+  filter: brightness(0.95);
+}
+
+.btn-ghost {
+  background: #fff;
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.msg {
+  margin: 0.8rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.help {
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.8rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+code {
+  background: #f0ece1;
+  border: 1px solid #e0dacd;
+  border-radius: 0.45rem;
+  padding: 0.05rem 0.35rem;
+}
+
+@media (max-width: 700px) {
+  .panel-head {
+    flex-direction: column;
+  }
+
+  .panel-head .btn-ghost {
+    width: 100%;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
