@@ -53,7 +53,13 @@ Esto funciona muy simple, lo vital es tener un metodo (que puede llamarse de cua
 ]
 ```
 
-El valor no tiene que ser un string, puede ser un numero o cualquier tipo de dato. Esto lo que hara sera pasar datos al front (el .php creado en el punto 1) y poder tener ese datos desde ahi.
+El valor no tiene que ser un string, puede ser un numero o cualquier tipo de dato. Esto lo que hara sera pasar datos al front (el .php creado en el punto 1) y poder tener ese datos desde ahi. Paa poder usar el dato desde el front se usa directamente como una variable de PHP. Por ejemplo puedes hacer un:
+
+```html
+<h1><?= $key ?></h1>
+```
+
+Esto te devolveria un h1 con "valor" (lo que se definio arriba).
 
 ## 3 Declarar la ruta
 
