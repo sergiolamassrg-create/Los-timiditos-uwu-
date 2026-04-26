@@ -26,18 +26,18 @@
       </div>
     </div>
     <div class="container nav-wrap">
-      <a class="brand" href="index.html#top" aria-label="Ir al inicio">
+      <a class="brand" href="/#top" aria-label="Ir al inicio">
         <img src="/img/logo.jpg" alt="Logo TAPISUR" />
         <span>TAPISUR</span>
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav" class="site-nav" aria-label="Navegacion principal">
-        <a href="index.html">Inicio</a>
-        <a href="catalogo.html">Catalogo</a>
-        <a href="servicios.html">Servicios</a>
-        <a href="entregas.html">Entregas</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="contacto.html">Contacto</a>
+        <a href="/">Inicio</a>
+        <a href="/catalogo">Catalogo</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/entregas">Entregas</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/contacto">Contacto</a>
       </nav>
       <a class="btn btn-primary nav-cta wa-link" data-wa-message="Hola TAPISUR, quiero cotizar un modelo." target="_blank" rel="noopener noreferrer" href="https://wa.me/5491151103419?text=Hola%20TAPISUR%2C%20quiero%20cotizar%20un%20modelo.">Cotizar proyecto</a>
     </div>
@@ -119,7 +119,7 @@
       <section class="catalog-results">
         <div class="results-head">
           <p id="resultsCount">0 modelos encontrados</p>
-          <a class="btn btn-secondary" href="index.html">Volver al inicio</a>
+          <a class="btn btn-secondary" href="/">Volver al inicio</a>
         </div>
         <div id="catalogGrid" class="catalog-grid"></div>
       </section>
@@ -141,7 +141,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <a class="brand footer-brand" href="index.html#top" aria-label="Ir al inicio">
+        <a class="brand footer-brand" href="/#top" aria-label="Ir al inicio">
           <img src="/img/logo.jpg" alt="Logo TAPISUR" />
           <span>TAPISUR</span>
         </a>
@@ -150,10 +150,10 @@
       <div>
         <h3>Navegación</h3>
         <ul class="footer-list">
-          <li><a href="catalogo.html">Catalogo</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="entregas.html">Entregas</a></li>
-          <li><a href="garantia.html">Garantia</a></li>
+          <li><a href="catalogo">Catalogo</a></li>
+          <li><a href="servicios">Servicios</a></li>
+          <li><a href="entregas">Entregas</a></li>
+          <li><a href="garantia">Garantia</a></li>
         </ul>
       </div>
       <div>

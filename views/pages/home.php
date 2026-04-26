@@ -54,10 +54,10 @@
       <nav id="site-nav" class="site-nav" aria-label="Navegación principal">
         <a href="#inicio">Inicio</a>
         <a href="/catalogo">Catálogo</a>
-        <a href="servicios.html">Servicios</a>
-        <a href="entregas.html">Entregas</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="#contacto">Contacto</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/entregas">Entregas</a>
+        <a href="/nosotros">Nosotros</a>
+        <a href="/contacto">Contacto</a>
       </nav>
       <a class="btn btn-primary nav-cta wa-link" data-wa-message="Hola TAPISUR, quiero cotizar un modelo." target="_blank" rel="noopener noreferrer" href="https://wa.me/5491151103419?text=Hola%20TAPISUR%2C%20quiero%20cotizar%20un%20modelo.">Cotizar proyecto</a>
     </div>
@@ -140,17 +140,17 @@
           <article class="module-card reveal">
             <h3>Catálogo</h3>
             <p>Explorá modelos, variantes y consultas por producto desde un módulo específico.</p>
-            <a class="btn btn-secondary" href="catalogo.html">Ver catálogo</a>
+            <a class="btn btn-secondary" href="/catalogo">Ver catálogo</a>
           </article>
           <article class="module-card reveal">
             <h3>Servicios</h3>
             <p>Retapizados, restauración, sillas gamers, butacas, sommiers y muebles a medida.</p>
-            <a class="btn btn-secondary" href="servicios.html">Ver servicios</a>
+            <a class="btn btn-secondary" href="/servicios">Ver servicios</a>
           </article>
           <article class="module-card reveal">
             <h3>Entregas y fletes</h3>
             <p>Conocé cómo se coordinan visitas, entregas en GBA y consultas al resto del país.</p>
-            <a class="btn btn-secondary" href="entregas.html">Ver entregas</a>
+            <a class="btn btn-secondary" href="/entregas">Ver entregas</a>
           </article>
         </div>
       </div>
@@ -267,12 +267,12 @@
       <div>
         <h3>Navegación</h3>
         <ul class="footer-list">
-          <li><a href="catalogo.html">Catálogo</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="entregas.html">Entregas y fletes</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
-          <li><a href="garantia.html">Garantía</a></li>
-          <li><a href="alianzas.html">Alianzas</a></li>
+          <li><a href="/catalogo">Catálogo</a></li>
+          <li><a href="/servicios">Servicios</a></li>
+          <li><a href="/entregas">Entregas y fletes</a></li>
+          <li><a href="/nosotros">Nosotros</a></li>
+          <li><a href="/garantia">Garantía</a></li>
+          <li><a href="/alianzas">Alianzas</a></li>
         </ul>
       </div>
       <div>

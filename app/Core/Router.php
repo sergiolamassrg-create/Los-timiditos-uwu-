@@ -100,7 +100,8 @@ class Router
 
     if (is_string($action)) {
         [$controllerName, $method] = explode('@', $action);
-        $controllerClass = "App\\Controllers\\$controllerName";
+        
+        $controllerClass = "App\\Controllers\\" . str_replace('/', '\\', $controllerName);
 
         if (!class_exists($controllerClass)) {
             throw new \Exception("Controller [$controllerClass] not found");

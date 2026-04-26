@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-
+use App\Core\Database;
 class ExampleController extends Controller
 {
     /**
@@ -20,14 +20,16 @@ class ExampleController extends Controller
         ]);
     }
     public function exampleID($id){
-        // una peticion a la base de datos
+        $db = Database::connect();
+        $stmt = $db->prepare("Select * from sofas where id = ?");
+        $stmt->execute([$id]);
           return $this->view('pages/exampleID', [
             'id' => $id,
-            "titulo"=>"titulo 1dddddddddd"
+            "datos"=>$stmt->fetchAll()
         ]);
     }
  public function exampleIDTWO($id,$TwoID){
-    
+         
           return $this->view('pages/exampleIDTWO', [
             'id' => $id,
             "idTwo" =>$TwoID
