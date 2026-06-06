@@ -2,7 +2,7 @@
 
 Proyecto: Sistema web de gestión comercial y administrativa para Tapisur  
 Equipo: DataFour / Los timiditos uwu  
-Fecha: 29/05/2026 -
+Fecha: 29/05/2026 -.-
 
 ## Objetivo del MVP
 
