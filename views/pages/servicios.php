@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="icon" href="/img/logo.jpg" type="image/jpeg" />
+  <link rel="icon" href="/img/logo-icon.jpg" type="image/jpeg" />
 </head>
 <body class="page-shell page-services">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -23,15 +23,14 @@
     </div>
     <div class="container nav-wrap">
       <a class="brand" href="/" aria-label="Ir al inicio">
-        <img src="/img/logo.jpg" alt="Logo TAPISUR" />
-        <span>TAPISUR</span>
+        <img src="/img/logo-icon.jpg" alt="Logo TAPISUR" />
+        <span>Tapisur</span>
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav" class="site-nav" aria-label="Navegacion principal">
         <a href="/">Inicio</a>
         <a href="/catalogo">Catalogo</a>
         <a href="/servicios">Servicios</a>
-        <a href="/entregas">Entregas</a>
         <a href="/nosotros">Nosotros</a>
         <a href="/contacto">Contacto</a>
       </nav>
@@ -44,7 +43,7 @@
       <div class="container page-hero-grid">
         <div class="page-hero-copy reveal">
           <p class="kicker">Servicios</p>
-          <h1>Soluciones artesanales para renovar, restaurar y fabricar</h1>
+          <h1>Soluciones a medida</h1>
           <p>Trabajamos sobre proyectos nuevos y piezas con historia. Nuestro enfoque combina oficio, asesoramiento directo y una ejecucion cuidada de punta a punta.</p>
           <div class="hero-badge-row">
             <span class="hero-badge">Retapizados y restauracion</span>
@@ -218,8 +217,8 @@
     <div class="container footer-grid">
       <div>
         <a class="brand footer-brand" href="/" aria-label="Ir al inicio">
-          <img src="/img/logo.jpg" alt="Logo TAPISUR" />
-          <span>TAPISUR</span>
+          <img src="/img/logo-icon.jpg" alt="Logo TAPISUR" />
+          <span>Tapisur</span>
         </a>
         <p>Servicios de tapiceria, restauracion y fabricacion a medida para clientes finales y alianzas comerciales.</p>
       </div>

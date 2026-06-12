@@ -10,9 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="icon" href="/img/logo.jpg" type="image/jpeg" />
+  <link rel="icon" href="/img/logo-icon.jpg" type="image/jpeg" />
 </head>
-<body>
+<body class="page-contact">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header" id="top">
     <div class="top-bar">
@@ -23,15 +23,14 @@
     </div>
     <div class="container nav-wrap">
       <a class="brand" href="/" aria-label="Ir al inicio">
-        <img src="/img/logo.jpg" alt="Logo TAPISUR" />
-        <span>TAPISUR</span>
+        <img src="/img/logo-icon.jpg" alt="Logo TAPISUR" />
+        <span>Tapisur</span>
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav" class="site-nav" aria-label="Navegacion principal">
         <a href="/">Inicio</a>
         <a href="/catalogo">Catalogo</a>
         <a href="/servicios">Servicios</a>
-        <a href="/entregas">Entregas</a>
         <a href="/nosotros">Nosotros</a>
         <a href="/contacto">Contacto</a>
       </nav>
@@ -44,16 +43,16 @@
       <div class="container page-hero-grid">
         <div class="page-hero-copy reveal">
           <p class="kicker">Contacto</p>
-          <h1>Atencion directa por WhatsApp, telefono y agenda coordinada</h1>
+          <h1>Estamos para acompa&ntilde;arte</h1>
           <p>Buscamos que cada consulta tenga una respuesta clara. Podes comunicarte para cotizaciones, servicios, entregas, alianzas o seguimiento.</p>
           <div class="hero-cta">
             <a class="btn btn-primary wa-link" data-wa-message="Hola TAPISUR, quiero hacer una consulta." target="_blank" rel="noopener noreferrer" href="#">Escribir por WhatsApp</a>
             <a class="btn btn-secondary" data-phone-link="1" href="tel:+541151103419">Llamar ahora</a>
           </div>
         </div>
-        <figure class="page-hero-media reveal">
-          <img src="/img/catalogo/page11_img01.jpeg" alt="Atencion comercial TAPISUR" loading="lazy" />
-        </figure>
+        <div class="map page-hero-map reveal">
+          <iframe title="Mapa de TAPISUR" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Juan+Esteban+Pedernera+1462,+Lan%C3%BAs+Este,+Buenos+Aires&output=embed"></iframe>
+        </div>
       </div>
     </section>
 
@@ -85,8 +84,8 @@
     <div class="container footer-grid">
       <div>
         <a class="brand footer-brand" href="/" aria-label="Ir al inicio">
-          <img src="/img/logo.jpg" alt="Logo TAPISUR" />
-          <span>TAPISUR</span>
+          <img src="/img/logo-icon.jpg" alt="Logo TAPISUR" />
+          <span>Tapisur</span>
         </a>
         <p>Contacto comercial e institucional para clientes particulares, revendedores y proyectos especiales.</p>
       </div>

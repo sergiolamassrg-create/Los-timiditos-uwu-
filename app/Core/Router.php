@@ -56,9 +56,15 @@ class Router
     public function dispatch($requestUri, $requestMethod)
 {
     $path = parse_url($requestUri, PHP_URL_PATH);
+    $basePath = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '')), '/');
+    $basePath = $basePath === '.' ? '' : $basePath;
+
+    if ($basePath !== '' && strpos($path, $basePath) === 0) {
+        $path = substr($path, strlen($basePath)) ?: '/';
+    }
 
     if (strpos($path, '/index.php') === 0) {
-        $path = substr($path, 10);
+        $path = substr($path, 10) ?: '/';
     }
 
     $path = rtrim($path, '/');

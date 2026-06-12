@@ -1,6 +1,6 @@
 # Sistema web de gestión comercial y administrativa para Tapisur
 
-Proyecto universitario desarrollado por el equipo DataFour / Los timiditos uwu para la materia Práctica Profesionalizante II.
+Proyecto universitario desarrollado por el equipo **DataFour / Los timiditos uwu** para la materia **Práctica Profesionalizante II**.
 
 ## Objetivo
 
@@ -53,6 +53,7 @@ Tapisur es un emprendimiento familiar con trayectoria en fabricación de sillone
 - Frontend: HTML, CSS y JavaScript.
 - Backend: PHP.
 - Base de datos: MySQL.
+- Dependencias PHP: Composer.
 - Gestión de tareas: Trello.
 - Control de versiones: GitHub.
 
@@ -65,27 +66,37 @@ Tapisur es un emprendimiento familiar con trayectoria en fabricación de sillone
 
 Estado actual: en preparación / desarrollo inicial.
 
-Cuando el backend esté implementado, el proyecto deberá ejecutarse en un entorno compatible con PHP y MySQL.
+El proyecto está preparado para correr en un entorno compatible con PHP.
 
-Ejecución esperada para desarrollo local:
+### Opción con servidor PHP local
 
-1. Clonar o descargar el repositorio.
-2. Configurar un servidor local compatible con PHP.
-3. Crear la base de datos MySQL.
-4. Importar el script SQL cuando esté disponible.
-5. Configurar credenciales de conexión a la base de datos.
-6. Abrir el sitio desde el servidor local.
+Desde la raíz del proyecto:
 
-Ejemplo de entornos posibles:
+```bash
+composer install
+php -S localhost:8000 dev-router.php
+```
 
-- XAMPP.
-- Laragon.
-- Servidor PHP local.
-- Hosting compatible con PHP y MySQL.
+Luego abrir:
+
+```text
+http://localhost:8000
+```
+
+### Opción con XAMPP o Laragon
+
+1. Copiar el proyecto dentro de la carpeta del servidor local.
+2. Configurar el host local o acceder desde la ruta correspondiente.
+3. Crear la base de datos MySQL cuando el script SQL definitivo esté disponible.
+4. Configurar credenciales en `.env`.
+5. Abrir el sitio desde el navegador.
 
 ## Documentación
 
-La documentación administrativa y funcional se encuentra en la carpeta `documentacion` y en la carpeta `Requerimentos`.
+La documentación administrativa y funcional se encuentra en:
+
+- `documentacion/`
+- `database/`
 
 Documentos principales:
 

@@ -1,0 +1,327 @@
+GUIA PARA CELESTE - CARGA Y GESTION DE TRELLO
+Proyecto: Sistema web de gestion comercial y administrativa para Tapisur
+Equipo: DataFour / Los timiditos uwu
+Fecha: 29/05/2026
+
+OBJETIVO
+
+Ordenar el tablero de Trello para que el equipo pueda trabajar siguiendo el documento de requisitos del proyecto.
+El PDF funciona como documento base aprobado. Trello se usa para gestionar el trabajo diario, nuevas tareas, responsables, estados y seguimiento.
+
+
+1. LISTAS RECOMENDADAS EN TRELLO
+
+Se recomienda usar estas listas:
+
+1. Backlog
+   Tareas futuras, ideas, funcionalidades que todavia no se van a desarrollar o que requieren definicion.
+
+2. Analisis / Refinamiento
+   Tareas que necesitan aclararse antes de pasar a desarrollo.
+
+3. To Do
+   Tareas listas para empezar.
+
+4. Doing
+   Tareas que alguien esta trabajando actualmente.
+
+5. Review
+   Tareas terminadas por quien las hizo, pero que necesitan revision del equipo, QA o Product Owner.
+
+6. Testing
+   Tareas listas para probar funcionalmente.
+
+7. Done
+   Tareas terminadas, revisadas y aceptadas.
+
+
+2. COMO ORDENAR EL TRELLO ACTUAL
+
+El tablero actual ya tiene listas utiles: To Do, Doing, Done, Backlog y Review.
+No hace falta borrar todo. La idea es reordenar y sumar tarjetas siguiendo el PDF.
+
+Sugerencia:
+
+- Mantener Done con lo que ya esta terminado.
+- Mantener Backlog para funcionalidades futuras.
+- Mantener To Do para tareas proximas.
+- Mantener Doing para tareas en curso.
+- Mantener Review para tareas que deben ser revisadas.
+- Agregar Testing si el equipo quiere separar revision tecnica de prueba funcional.
+
+
+3. TARJETAS INICIALES A CARGAR O AJUSTAR
+
+TARJETA: Validar alcance MVP con cliente
+Lista sugerida: Analisis / Refinamiento
+Responsable sugerido: Lamas Sergio
+Descripcion:
+Confirmar con Tapisur que el MVP incluye sitio web modular, catalogo, servicios, contacto por WhatsApp, login administrador, ABM de productos, ABM de servicios, clientes y ventas simples.
+Criterios de aceptacion:
+- Alcance aprobado o ajustado.
+- Funcionalidades fuera de alcance documentadas.
+- Dudas pendientes registradas.
+
+TARJETA: Responder dudas funcionales de backend
+Lista sugerida: Analisis / Refinamiento
+Responsable sugerido: Lamas Sergio / Gonzalo Erceg
+Descripcion:
+Definir datos de productos, servicios, ventas, perfiles de usuario y reglas de negocio.
+Criterios de aceptacion:
+- Campos minimos definidos.
+- Diferencia entre producto y servicio documentada.
+- Reglas sobre stock, precios y presupuesto personalizado validadas.
+
+TARJETA: Definir modelo inicial de base de datos
+Lista sugerida: Review o Done
+Responsable sugerido: Gonzalo Erceg
+Descripcion:
+Se definio el modelo inicial de base de datos para el MVP, incluyendo usuarios, roles, clientes, productos, servicios, ventas, detalles, imagenes, contenido del sitio e interacciones como fase 2.
+Criterios de aceptacion:
+- Diagrama de base de datos exportado.
+- Relaciones principales definidas.
+- Reglas de negocio documentadas.
+- Modelo validado para iniciar implementacion backend.
+- Archivo subido al repositorio.
+
+TARJETA: Disenar flujo de login administrador
+Lista sugerida: To Do
+Responsable sugerido: Gonzalo Erceg / Rodrigo D'Arena / Sebastian Colaiacovo
+Descripcion:
+Definir pantalla de login, validaciones, manejo de sesion, cierre de sesion y perfiles administrador/vendedor.
+Criterios de aceptacion:
+- Login permite acceso al panel.
+- Credenciales invalidas muestran error.
+- Cierre de sesion disponible.
+
+TARJETA: Implementar ABM de productos
+Lista sugerida: To Do
+Responsable sugerido: Gonzalo Erceg / Rodrigo D'Arena / Sebastian Colaiacovo
+Descripcion:
+Implementar alta, listado, edicion, activacion/desactivacion y carga de imagen de productos.
+Criterios de aceptacion:
+- Producto guarda nombre, descripcion, categoria e imagen.
+- Permite materiales, colores y medidas sugeridas.
+- Producto activo se visualiza en catalogo.
+
+TARJETA: Implementar ABM de servicios
+Lista sugerida: To Do
+Responsable sugerido: Gonzalo Erceg / Rodrigo D'Arena / Sebastian Colaiacovo
+Descripcion:
+Implementar alta, listado, edicion y activacion/desactivacion de servicios.
+Criterios de aceptacion:
+- Servicio guarda nombre, descripcion, categoria y estado.
+- Servicio activo se visualiza en la web.
+- Servicio puede consultarse por WhatsApp.
+
+TARJETA: Registrar clientes
+Lista sugerida: To Do
+Responsable sugerido: Gonzalo Erceg
+Descripcion:
+Implementar registro interno de clientes con tipo minorista, mayorista o revendedor.
+Criterios de aceptacion:
+- Cliente guarda nombre, telefono, tipo y observaciones.
+- Permite busqueda simple.
+- Evita duplicados basicos por telefono cuando sea posible.
+
+TARJETA: Registrar ventas simples
+Lista sugerida: To Do
+Responsable sugerido: Gonzalo Erceg
+Descripcion:
+Implementar carga de ventas asociadas a cliente, vendedor y producto o servicio.
+Criterios de aceptacion:
+- Venta guarda fecha, cliente, item, precio, vendedor y observaciones.
+- Administrador puede editar ventas.
+- Vendedor puede registrar ventas.
+
+TARJETA: Ajustar catalogo publico
+Lista sugerida: To Do
+Responsable sugerido: Rodrigo D'Arena / Sebastian Colaiacovo
+Descripcion:
+Conectar la visualizacion del catalogo con datos administrables.
+Criterios de aceptacion:
+- Muestra productos activos.
+- Filtros funcionan correctamente.
+- Boton de WhatsApp arma mensaje contextual.
+
+TARJETA: QA funcional MVP
+Lista sugerida: Testing
+Responsable sugerido: Julio Jeremy Castaneda Samaniego
+Descripcion:
+Probar los flujos principales del MVP.
+Criterios de aceptacion:
+- Login probado.
+- ABM de productos probado.
+- ABM de servicios probado.
+- Consulta por WhatsApp probada.
+- Registro de venta probado.
+
+TARJETA: Organizacion y seguimiento en Trello
+Lista sugerida: Doing
+Responsable sugerido: Celeste Moioli
+Descripcion:
+Ordenar listas, tarjetas, responsables, prioridades y estados del tablero.
+Criterios de aceptacion:
+- Tablero creado y organizado.
+- Tarjetas priorizadas.
+- Responsables y estados actualizados.
+
+TARJETA: Gestion de producto y revision general
+Lista sugerida: Analisis / Refinamiento
+Responsable sugerido: Sebastian Pryjmak
+Descripcion:
+Cubrir el rol de Product Manager, acompanando la vision del producto, la revision de prioridades y la coordinacion de decisiones funcionales.
+Criterios de aceptacion:
+- Prioridades del producto revisadas.
+- Decisiones funcionales registradas.
+- Observaciones cargadas en Trello.
+
+
+4. TARJETAS ADMINISTRATIVAS Y DE DOCUMENTACION
+
+Estas tarjetas sirven para dejar trazabilidad de lo que ya se subio o actualizo en GitHub.
+
+TARJETA: Actualizar README del repositorio
+Lista sugerida: Review o Done
+Responsable sugerido: Lamas Sergio / Celeste Moioli
+Descripcion:
+Se reorganizo y actualizo el README existente. Se mantuvo la informacion principal del proyecto y se agrego estructura formal para GitHub: objetivo, cliente, equipo, alcance MVP, tecnologias, ejecucion local, documentacion, metodologia de trabajo y enlaces a Trello/GitHub.
+Criterios de aceptacion:
+- README reemplazado en la raiz del repositorio.
+- Informacion anterior relevante conservada o integrada.
+- Roles del equipo agregados.
+- Alcance MVP actualizado.
+- Instrucciones de ejecucion incluidas.
+- Enlaces a Trello y GitHub incluidos.
+- Documento revisado por el equipo.
+
+TARJETA: Subir documentacion administrativa al repositorio
+Lista sugerida: Review o Done
+Responsable sugerido: Lamas Sergio / Celeste Moioli
+Descripcion:
+Se subieron al repositorio los documentos administrativos del proyecto: indice de documentacion, minuta de cliente y criterios de entrega del MVP. La documentacion complementa el PDF de requisitos y ayuda a organizar el trabajo del equipo.
+Criterios de aceptacion:
+- Archivos subidos a GitHub.
+- Minuta de cliente disponible.
+- Criterios de entrega del MVP disponibles.
+- Indice de documentacion disponible.
+- Enlace del repositorio compartido con el equipo.
+
+TARJETA: Subir diagrama de base de datos al repositorio
+Lista sugerida: Review o Done
+Responsable sugerido: Gonzalo Erceg / Lamas Sergio
+Descripcion:
+Se exporto y subio el diagrama inicial de base de datos del MVP, incluyendo entidades, relaciones, claves primarias, claves foraneas, reglas de negocio, seguridad y auditoria.
+Criterios de aceptacion:
+- Diagrama exportado como imagen o PDF.
+- Archivo subido a la carpeta documentacion del repositorio.
+- Modelo visible para el equipo.
+- Reglas principales incluidas en el diagrama.
+- Gonzalo puede usarlo como base para la implementacion backend.
+
+
+5. QUE HACER CON LAS TARJETAS QUE YA EXISTEN
+
+Las tarjetas actuales no estan mal. Algunas se pueden mantener y vincular con las nuevas.
+
+Sugerencias:
+
+- "Crear repositorio GitHub" puede quedar en Done.
+- "Reunion inicial del equipo" puede quedar en Done.
+- "Relevamiento inicial del cliente" puede quedar en Done.
+- "Definicion preliminar del proyecto" puede quedar en Done.
+- "Eleccion de tecnologias base" puede quedar en Done.
+- "Analisis inicial del negocio" puede quedar en Done.
+- "hacer vistas de la aplicacion" se puede renombrar como "Construir vistas principales del sistema".
+- "landing para los posibles clientes" se puede renombrar como "Ajustar pagina principal para clientes".
+- "identidad visual" puede quedar en To Do o Review, segun estado.
+- "reglas de SEO" puede quedar en Backlog o To Do, pero no es prioridad del MVP.
+- "definir usuario - login registro..." se puede vincular con "Disenar flujo de login administrador".
+- "investigue como poner el botoncito a WhatsApp" se puede vincular con "Consultas por WhatsApp desde productos y servicios".
+- Las tarjetas del Backlog actual, como estadisticas, dashboard, pedidos, presupuestos, seguimiento y reportes, deben quedar en Backlog porque son alcance futuro.
+
+
+6. PRIORIDAD SUGERIDA PARA EL MVP
+
+Orden recomendado:
+
+1. Validar alcance MVP con cliente.
+2. Definir modelo inicial de base de datos.
+3. Disenar flujo de login administrador.
+4. Implementar ABM de productos.
+5. Implementar ABM de servicios.
+6. Ajustar catalogo publico.
+7. Configurar consultas por WhatsApp.
+8. Registrar clientes.
+9. Registrar ventas simples.
+10. QA funcional MVP.
+
+
+7. COMO USAR CADA TARJETA
+
+Cada tarjeta deberia tener:
+
+- Titulo claro.
+- Responsable.
+- Descripcion.
+- Criterios de aceptacion.
+- Checklist si la tarea es grande.
+- Comentarios con decisiones importantes.
+- Adjuntos si corresponde: capturas, links, archivos o referencia al PDF.
+
+Ejemplo de checklist para ABM de productos:
+
+- Crear formulario de alta.
+- Crear listado de productos.
+- Crear edicion de producto.
+- Crear activacion/desactivacion.
+- Validar campos obligatorios.
+- Guardar imagen o ruta de imagen.
+- Mostrar productos activos en catalogo.
+- Probar flujo completo.
+
+
+8. CUANDO ACTUALIZAR EL PDF Y CUANDO SOLO TRELLO
+
+No hace falta actualizar el PDF por cada tarea nueva.
+
+Actualizar Trello es suficiente cuando:
+
+- Se agrega una tarea tecnica.
+- Se divide una tarea grande en subtareas.
+- Se cambia un responsable.
+- Se mueve una tarea de estado.
+- Aparece una mejora menor.
+- Se detecta un bug o ajuste puntual.
+- Se suman tareas de diseno, testing o implementacion.
+
+Actualizar el PDF solo cuando cambie algo importante del proyecto, por ejemplo:
+
+- Cambia el alcance del MVP.
+- Se agrega o elimina una funcionalidad principal.
+- Cambian reglas de negocio.
+- Cambian roles del equipo.
+- Cambian tecnologias base.
+- El cliente aprueba o rechaza una decision importante.
+- Se modifica un requerimiento funcional ya documentado.
+
+Recomendacion:
+El PDF debe quedar como documento formal de base.
+Trello debe ser la herramienta viva de trabajo.
+Si aparece algo nuevo, primero se carga en Trello.
+Si despues esa novedad cambia el alcance o los requisitos, recien ahi se actualiza el PDF.
+
+
+9. RECOMENDACION PARA CELESTE
+
+Como Scrum Master, Celeste podria encargarse de:
+
+- Mantener el tablero ordenado.
+- Revisar que cada tarjeta tenga responsable.
+- Revisar que las tareas tengan criterios de aceptacion.
+- Mover tarjetas segun avance real.
+- Pedir aclaraciones cuando una tarjeta sea ambigua.
+- Preparar una revision semanal corta del tablero.
+- Separar tareas futuras del MVP actual.
+
+El objetivo no es cargar muchas tarjetas, sino que cada tarjeta sea clara, accionable y verificable.

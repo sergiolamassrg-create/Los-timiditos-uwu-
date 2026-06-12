@@ -1,6 +1,11 @@
 ﻿import { CATALOG } from './catalog-data.js';
 
 const filtersForm = document.getElementById('catalogFilters');
+const ACTIVE_CATALOG =
+  Array.isArray(window.__TAPISUR_CATALOG__) && window.__TAPISUR_CATALOG__.length
+    ? window.__TAPISUR_CATALOG__
+    : CATALOG;
+const APP_BASE_PATH = window.__APP_BASE_PATH__ || '';
 const categoryGroup = document.getElementById('categoryGroup');
 const materialGroup = document.getElementById('materialGroup');
 const featuresGroup = document.getElementById('featuresGroup');
@@ -29,7 +34,7 @@ const state = {
 
 function uniqueValues(key) {
   const values = new Set();
-  CATALOG.forEach((item) => {
+  ACTIVE_CATALOG.forEach((item) => {
     const value = item[key];
     if (Array.isArray(value)) value.forEach((v) => values.add(v));
     else values.add(value);
@@ -62,6 +67,16 @@ function createBadgeList(values) {
   return values.map((v) => `<span class="badge">${v}</span>`).join('');
 }
 
+function catalogAsset(path) {
+  const value = String(path || '');
+
+  if (/^(https?:)?\/\//.test(value) || value.startsWith('data:')) return value;
+  if (APP_BASE_PATH && value.startsWith(`${APP_BASE_PATH}/`)) return value;
+  if (value.startsWith('/')) return `${APP_BASE_PATH}${value}`;
+
+  return `${APP_BASE_PATH}/${value}`;
+}
+
 function cardTemplate(item) {
   const materialOptions = item.materials
     .map((m) => `<option value="${m}">${m}</option>`)
@@ -75,7 +90,7 @@ function cardTemplate(item) {
 
   return `
     <article class="catalog-card" data-id="${item.id}">
-      <img src="${item.image}" alt="${item.name}" loading="lazy" />
+      <img src="${catalogAsset(item.image)}" alt="${item.name}" loading="lazy" />
       <div class="card-content">
         <p class="card-overline">${item.category} · ${item.subcategory}</p>
         <h3>${item.name}</h3>
@@ -114,7 +129,7 @@ function matchesSets(selectedSet, values) {
 }
 
 function applyFilters() {
-  let filtered = CATALOG.filter((item) => {
+  let filtered = ACTIVE_CATALOG.filter((item) => {
     const searchable = `${item.name} ${item.category} ${item.subcategory} ${item.features.join(' ')}`.toLowerCase();
     const matchSearch = searchable.includes(state.search);
     const matchCategory = matchesSets(state.categories, item.category);
@@ -200,7 +215,7 @@ function sendInterest(card, item) {
 function onGridAction(event) {
   const card = event.target.closest('.catalog-card');
   if (!card) return;
-  const item = CATALOG.find((x) => x.id === card.dataset.id);
+  const item = ACTIVE_CATALOG.find((x) => x.id === card.dataset.id);
   if (!item) return;
 
   if (event.target.classList.contains('detail-btn')) {

@@ -26,7 +26,7 @@ class Database
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 ]);
             } catch (PDOException $e) {
-                die("DB Error: " . $e->getMessage());
+                throw $e;
             }
         }
 

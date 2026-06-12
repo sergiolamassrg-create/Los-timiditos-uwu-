@@ -71,12 +71,12 @@ if (navLinks.length) {
 }
 
 if (pageLinks.length) {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
   pageLinks.forEach((link) => {
     const href = link.getAttribute('href');
     if (!href || href.startsWith('http')) return;
-    const page = href.split('#')[0];
-    link.classList.toggle('active', page === currentPage);
+    const linkPath = href.split('#')[0].replace(/\/+$/, '') || '/';
+    link.classList.toggle('active', linkPath === currentPath);
   });
 }
 

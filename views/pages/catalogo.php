@@ -27,15 +27,14 @@
     </div>
     <div class="container nav-wrap">
       <a class="brand" href="/#top" aria-label="Ir al inicio">
-        <img src="/img/logo.jpg" alt="Logo TAPISUR" />
-        <span>TAPISUR</span>
+        <img src="/img/logo-icon.jpg" alt="Logo TAPISUR" />
+        <span>Tapisur</span>
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav" class="site-nav" aria-label="Navegacion principal">
         <a href="/">Inicio</a>
         <a href="/catalogo">Catalogo</a>
         <a href="/servicios">Servicios</a>
-        <a href="/entregas">Entregas</a>
         <a href="/nosotros">Nosotros</a>
         <a href="/contacto">Contacto</a>
       </nav>
@@ -142,8 +141,8 @@
     <div class="container footer-grid">
       <div>
         <a class="brand footer-brand" href="/#top" aria-label="Ir al inicio">
-          <img src="/img/logo.jpg" alt="Logo TAPISUR" />
-          <span>TAPISUR</span>
+          <img src="/img/logo-icon.jpg" alt="Logo TAPISUR" />
+          <span>Tapisur</span>
         </a>
         <p>Fábrica de sillones en Lanús Este. Diseño, confort y fabricación a medida.</p>
       </div>
@@ -174,7 +173,9 @@
   <script src="/js/site-defaults.js"></script>
   <script src="/js/site-content.js"></script>
   <script src="/js/main.js"></script>
+  <script>
+    window.__TAPISUR_CATALOG__ = <?= json_encode($catalogItems ?? [], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT); ?>;
+  </script>
   <script type="module" src="/js/catalogo-module.js"></script>
 </body>
 </html>
-

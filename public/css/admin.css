@@ -15,7 +15,7 @@ body {
   margin: 0;
   font-family: "DM Sans", sans-serif;
   color: var(--text);
-  background: radial-gradient(900px 500px at 100% 0, rgba(125, 133, 104, 0.12), transparent), var(--bg);
+  background: var(--bg);
 }
 
 h1, h2, h3 {
@@ -23,17 +23,49 @@ h1, h2, h3 {
   font-family: "Outfit", sans-serif;
 }
 
+.admin-shell,
 .admin-wrap {
-  width: min(860px, calc(100% - 1.4rem));
+  width: min(1180px, calc(100% - 1.4rem));
   margin: 2rem auto;
 }
 
+.admin-shell--narrow {
+  width: min(520px, calc(100% - 1.4rem));
+  min-height: calc(100vh - 4rem);
+  display: grid;
+  place-items: center;
+}
+
+.admin-card,
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 1rem;
+  border-radius: 8px;
   padding: 1.2rem;
   box-shadow: 0 12px 24px rgba(29, 31, 28, 0.08);
+}
+
+.admin-topbar,
+.section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.topbar-actions,
+.row-actions,
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.topbar-actions form,
+.row-actions form {
+  margin: 0;
 }
 
 .eyebrow {
@@ -62,29 +94,42 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   font: inherit;
   color: inherit;
   border: 1px solid var(--line);
-  border-radius: 0.65rem;
+  border-radius: 8px;
   background: #fcfcfb;
   padding: 0.62rem 0.72rem;
 }
 
+.btn,
 button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font: inherit;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: 8px;
   background: var(--accent);
   color: #fff;
   padding: 0.62rem 1rem;
   cursor: pointer;
   font-weight: 700;
+  text-decoration: none;
 }
 
+.btn:hover,
+.btn:focus-visible,
 button:hover,
 button:focus-visible {
   filter: brightness(0.95);
+}
+
+.btn-small {
+  padding: 0.42rem 0.62rem;
+  font-size: 0.86rem;
 }
 
 .btn-ghost {
@@ -93,18 +138,39 @@ button:focus-visible {
   color: var(--text);
 }
 
+.btn-danger {
+  background: #b34a42;
+}
+
+.muted {
+  color: var(--muted);
+  margin-top: 0;
+}
+
+.alert {
+  border-radius: 8px;
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.9rem;
+  font-weight: 700;
+}
+
+.alert-ok {
+  background: #e8f4e8;
+  border: 1px solid #b8d7b8;
+  color: #2d6530;
+}
+
+.alert-error {
+  background: #fae9e6;
+  border: 1px solid #e3b5ae;
+  color: #8c3028;
+}
+
 .panel-head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
-}
-
-.actions {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-top: 0.8rem;
 }
 
 .msg {
@@ -126,18 +192,107 @@ code {
   border: 1px solid #e0dacd;
   border-radius: 0.45rem;
   padding: 0.05rem 0.35rem;
+  overflow-wrap: anywhere;
+}
+
+.form-grid--wide {
+  grid-template-columns: 180px minmax(0, 1fr);
+  align-items: center;
+}
+
+.form-grid--wide textarea,
+.form-grid--wide .toggle-row,
+.form-grid--wide .actions {
+  grid-column: 2;
+}
+
+.toggle-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.toggle-row label {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 920px;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.72rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+td span {
+  display: block;
+  color: var(--muted);
+  margin-top: 0.18rem;
+}
+
+.status {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.status.is-active {
+  background: #e8f4e8;
+  color: #2d6530;
+}
+
+.status.is-inactive {
+  background: #efebe4;
+  color: #6a5c4e;
 }
 
 @media (max-width: 700px) {
+  .admin-topbar,
+  .section-head,
   .panel-head {
     flex-direction: column;
   }
 
+  .topbar-actions,
   .panel-head .btn-ghost {
     width: 100%;
   }
 
+  .topbar-actions .btn,
+  .topbar-actions form,
+  .topbar-actions button,
   .actions button {
     width: 100%;
+  }
+
+  .form-grid--wide {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid--wide textarea,
+  .form-grid--wide .toggle-row,
+  .form-grid--wide .actions {
+    grid-column: auto;
   }
 }

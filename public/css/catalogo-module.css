@@ -315,3 +315,220 @@
   }
 }
 
+/* Nuevo diseno Front - catalogo */
+.catalog-page {
+  background: linear-gradient(180deg, #fbf7f0 0%, #f8f1e7 100%);
+}
+
+.catalog-hero {
+  position: relative;
+  min-height: 250px;
+  display: grid;
+  align-items: center;
+  padding: 3.8rem 0;
+  overflow: hidden;
+  background: #f7eee5;
+}
+
+.catalog-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 34%;
+  background:
+    linear-gradient(90deg, rgba(247, 238, 229, 1), rgba(247, 238, 229, 0.1) 42%),
+    url("../img/catalogo/page11_img03.jpeg") center / cover no-repeat;
+}
+
+.catalog-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+}
+
+.catalog-hero h1 {
+  font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+}
+
+.catalog-layout {
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1.6rem;
+  padding-top: 1.6rem;
+}
+
+.filters,
+.catalog-results {
+  border-color: rgba(122, 101, 82, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 250, 244, 0.86);
+  box-shadow: none;
+}
+
+.filters {
+  top: 6.2rem;
+  padding: 1.35rem;
+}
+
+.filters h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+}
+
+.field label {
+  color: var(--text);
+}
+
+.field input[type="search"],
+.field select,
+.config select {
+  border-radius: 6px;
+  background: #fffaf4;
+  border-color: #dccfc1;
+}
+
+.check-grid {
+  max-height: none;
+  gap: 0.5rem;
+}
+
+.check-item {
+  color: #3b3028;
+}
+
+.check-item input,
+.featured-toggle input {
+  accent-color: var(--accent);
+}
+
+.filter-actions {
+  flex-direction: column;
+}
+
+.catalog-results {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.results-head {
+  min-height: 3.4rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 250, 244, 0.94);
+  border: 1px solid rgba(122, 101, 82, 0.16);
+  border-radius: 8px;
+}
+
+.catalog-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.catalog-card {
+  position: relative;
+  border-color: rgba(122, 101, 82, 0.2);
+  border-radius: 8px;
+  background: #fffaf4;
+  box-shadow: none;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.catalog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 34px rgba(75, 51, 31, 0.11);
+}
+
+.catalog-card::before {
+  content: "A medida";
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  z-index: 1;
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(255, 250, 244, 0.92);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.catalog-card::after {
+  content: "♡";
+  position: absolute;
+  top: 0.85rem;
+  right: 0.9rem;
+  z-index: 1;
+  color: #fffaf4;
+  font-size: 1.65rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.catalog-card img {
+  aspect-ratio: 1.48 / 1;
+  border-bottom: 1px solid rgba(122, 101, 82, 0.16);
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-overline {
+  color: var(--brand);
+}
+
+.catalog-card h3 {
+  font-family: "DM Sans", "Segoe UI", sans-serif;
+  font-size: 1.1rem;
+  color: #1f1812;
+}
+
+.badges {
+  margin: 0.65rem 0 0.85rem;
+}
+
+.badge {
+  background: #eee5da;
+  border-color: #ded0c2;
+  color: #4d4034;
+}
+
+.config {
+  grid-template-columns: 1fr;
+}
+
+.card-actions {
+  margin-top: 0.8rem;
+}
+
+.card-actions .btn {
+  min-height: 2.7rem;
+  border-radius: 6px;
+}
+
+.card-actions .detail-btn {
+  display: none;
+}
+
+.card-actions .interest-btn {
+  color: var(--text);
+  background: transparent;
+  border: 1px solid #6c604f;
+  box-shadow: none;
+}
+
+@media (max-width: 1180px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 880px) {
+  .catalog-hero::before {
+    inset: 0;
+    opacity: 0.22;
+  }
+
+  .catalog-layout,
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
