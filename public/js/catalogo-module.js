@@ -177,6 +177,18 @@ function readStateFromForm() {
 }
 
 function modalTemplate(item) {
+  const text = [
+    'Hola TAPISUR, me interesa este modelo:',
+    item.name,
+    '',
+    `Categoria: ${item.category}`,
+    `Descripcion: ${item.description}`,
+    '',
+    'Quiero recibir asesoramiento y disponibilidad.'
+  ].join('\n');
+
+  const waUrl = `https://wa.me/5491151103419?text=${encodeURIComponent(text)}`;
+
   return `
     <h3>${item.name}</h3>
     <p>${item.description}</p>
@@ -184,6 +196,9 @@ function modalTemplate(item) {
     <p><strong>Materiales:</strong> ${item.materials.join(', ')}</p>
     <p><strong>Medidas sugeridas:</strong> ${item.sizes.join(' · ')}</p>
     <p><strong>Terminaciones:</strong> ${item.features.join(', ')}</p>
+    <a class="btn btn-primary wa-link" href="${waUrl}" target="_blank" rel="noopener noreferrer">
+      Me interesa este modelo
+    </a>
   `;
 }
 
