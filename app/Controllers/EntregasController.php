@@ -17,7 +17,5 @@ class EntregasController extends Controller
      */
         return $this->view('pages/entregas', []);
     }
-   
-   
- 
+
 }
