@@ -33,12 +33,12 @@ class AdminController extends Controller
         }
 
         $stmt = Database::connect()->prepare("
-            SELECT u.*, r.nombre AS rol
-            FROM usuarios u
-            INNER JOIN roles r ON r.id_rol = u.id_rol
-            WHERE u.usuario = :user
-              AND u.activo = 1
-              AND r.activo = 1
+            SELECT u.*, r.label AS rol
+            FROM users u
+            INNER JOIN roles r ON r.id = u.role_id
+            WHERE u.username = :user
+              AND u.is_active = 1
+              AND r.is_active = 1
             LIMIT 1
         ");
         $stmt->execute(['user' => $user]);
@@ -50,9 +50,9 @@ class AdminController extends Controller
 
         session_regenerate_id(true);
         $_SESSION['admin_user'] = [
-            'id' => (int) $admin['id_usuario'],
-            'name' => $admin['nombre'],
-            'username' => $admin['usuario'],
+            'id' => (int) $admin['id'],
+            'name' => $admin['first_name'] . ' ' . $admin['last_name'],
+            'username' => $admin['username'],
             'role' => $admin['rol'],
         ];
         unset($_SESSION['admin_error']);
