@@ -45,6 +45,10 @@ h1, h2, h3 {
   box-shadow: 0 12px 24px rgba(29, 31, 28, 0.08);
 }
 
+.admin-card-spaced {
+  margin-top: 1rem;
+}
+
 .admin-topbar,
 .section-head {
   display: flex;
@@ -218,6 +222,79 @@ code {
   align-items: center;
 }
 
+.inline-create {
+  display: grid;
+  grid-template-columns: 1.1fr 1.35fr auto auto;
+  gap: 0.55rem;
+  align-items: center;
+  margin: 0 0 1rem;
+}
+
+.inline-create--compact {
+  grid-template-columns: minmax(160px, 1fr) minmax(160px, 1fr) auto;
+}
+
+.inline-check {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.table-wrap-compact table {
+  min-width: 760px;
+}
+
+.table-wrap-compact input,
+.table-wrap-compact select {
+  width: 100%;
+  min-width: 0;
+}
+
+.color-field,
+.color-chip {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.visual-color-field {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.visual-color-field span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.visual-color-field small {
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.visual-color-field input[type="color"] {
+  width: 2.8rem;
+  height: 2.4rem;
+  padding: 0.18rem;
+}
+
+.visual-color-field--row {
+  justify-content: flex-start;
+}
+
+.color-swatch {
+  display: inline-block;
+  flex: 0 0 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
 .table-wrap {
   width: 100%;
   overflow-x: auto;
@@ -294,5 +371,9 @@ td span {
   .form-grid--wide .toggle-row,
   .form-grid--wide .actions {
     grid-column: auto;
+  }
+
+  .inline-create {
+    grid-template-columns: 1fr;
   }
 }
