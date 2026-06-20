@@ -58,9 +58,22 @@
   <script src="/js/site-defaults.js"></script>
   <script src="/js/site-content.js"></script>
   <script src="/js/main.js"></script>
+  <?php if (!empty($inlineScripts)): ?>
+    <?php foreach ($inlineScripts as $script): ?>
+      <script><?= $script ?></script>
+    <?php endforeach; ?>
+  <?php endif; ?>
   <?php if (!empty($extraScripts)): ?>
     <?php foreach ($extraScripts as $script): ?>
-      <script src="<?= htmlspecialchars($script, ENT_QUOTES, 'UTF-8') ?>"></script>
+      <?php if (is_array($script)): ?>
+        <?php
+          $scriptSrc = htmlspecialchars($script['src'] ?? '', ENT_QUOTES, 'UTF-8');
+          $scriptType = !empty($script['type']) ? ' type="' . htmlspecialchars($script['type'], ENT_QUOTES, 'UTF-8') . '"' : '';
+        ?>
+        <script src="<?= $scriptSrc ?>"<?= $scriptType ?>></script>
+      <?php else: ?>
+        <script src="<?= htmlspecialchars($script, ENT_QUOTES, 'UTF-8') ?>"></script>
+      <?php endif; ?>
     <?php endforeach; ?>
   <?php endif; ?>
 </body>

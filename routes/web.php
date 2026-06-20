@@ -26,6 +26,14 @@ $router->group(['prefix'=>"/admin"],function($router){
     $router->get("/catalogo/{id}/editar","admin/AdminController@editProduct");
     $router->post("/catalogo/{id}/editar","admin/AdminController@updateProduct");
     $router->post("/catalogo/{id}/eliminar","admin/AdminController@deleteProduct");
+    $router->post("/telas/crear","admin/AdminController@storeFabric");
+    $router->post("/telas/{id}/editar","admin/AdminController@updateFabric");
+    $router->post("/telas/{id}/eliminar","admin/AdminController@deleteFabric");
+    $router->post("/colores/crear","admin/AdminController@storeColor");
+    $router->post("/colores/{id}/editar","admin/AdminController@updateColor");
+    $router->post("/colores/{id}/eliminar","admin/AdminController@deleteColor");
+    $router->post("/tela-colores/crear","admin/AdminController@storeFabricColor");
+    $router->post("/tela-colores/{id}/eliminar","admin/AdminController@deleteFabricColor");
 });
 
 
@@ -33,6 +41,5 @@ $router->group(['prefix'=>"/admin"],function($router){
 $router->get('/example',"ExampleController@index");
 $router->get('/example/{id}','ExampleController@exampleID');
 $router->get('/example/{id}/{TwoID}','ExampleController@exampleIDTWO');
-
 
 

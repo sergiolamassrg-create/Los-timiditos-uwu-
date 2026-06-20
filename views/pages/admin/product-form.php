@@ -23,7 +23,7 @@ $isFeatured = (int) ($product['destacado'] ?? 0) === 1;
       <div>
         <p class="eyebrow">Catálogo</p>
         <h1><?= $e($title) ?></h1>
-        <p class="muted">Los campos se guardan en `productos` y la imagen principal en `producto_imagenes`.</p>
+        <p class="muted">El producto guarda datos propios. Telas y colores se administran de forma global en el catálogo.</p>
       </div>
       <div class="topbar-actions">
         <a class="btn btn-ghost" href="/admin/catalogo">Volver</a>
@@ -54,15 +54,6 @@ $isFeatured = (int) ($product['destacado'] ?? 0) === 1;
 
         <label for="description">Descripción</label>
         <textarea id="description" name="description" rows="4" required><?= $e($product['descripcion'] ?? '') ?></textarea>
-
-        <label for="materials">Materiales</label>
-        <input id="materials" name="materials" type="text" value="<?= $e($product['materiales'] ?? '') ?>" placeholder="Chenille, pana, cuerina" />
-
-        <label for="colors">Colores</label>
-        <input id="colors" name="colors" type="text" value="<?= $e($product['colores'] ?? '') ?>" placeholder="Beige, gris, oliva" />
-
-        <label for="sizes">Medidas sugeridas</label>
-        <input id="sizes" name="sizes" type="text" value="<?= $e($product['medidas_sugeridas'] ?? '') ?>" placeholder="2.10 x 0.85 m, personalizada" />
 
         <label for="capacity">Capacidad</label>
         <input id="capacity" name="capacity" type="number" min="0" value="<?= (int) ($product['capacidad'] ?? 0) ?>" />
