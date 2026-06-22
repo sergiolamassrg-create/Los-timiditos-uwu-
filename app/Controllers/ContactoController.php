@@ -17,7 +17,5 @@ class ContactoController extends Controller
      */
         return $this->view('pages/contacto', []);
     }
-   
-   
- 
+
 }
