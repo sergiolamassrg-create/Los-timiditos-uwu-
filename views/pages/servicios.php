@@ -123,7 +123,7 @@ require __DIR__ . '/../partials/site-header.php';
       <div class="container feature-band">
         <article class="feature-lead reveal">
           <h3>Un taller que resuelve necesidades reales</h3>
-          <p>No vendemos un servicio generico. Analizamos cada caso, proponemos materiales, definimos terminaciones y acompanamos al cliente hasta el resultado final.</p>
+          <p>No vendemos un servicio generico. Analizamos cada caso, proponemos materiales, definimos terminaciones y acompañamos al cliente hasta el resultado final.</p>
         </article>
         <article class="feature-stat reveal">
           <strong>1 proceso</strong>

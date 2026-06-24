@@ -119,7 +119,7 @@ require __DIR__ . '/../partials/site-header.php';
             <p>Queremos que TAPISUR se haga conocida por una combinacion clara de oficio, diseno y atencion directa.</p>
           </article>
           <article class="quote-panel reveal">
-            <p>La propuesta no termina en la fabricacion: acompanamos al cliente desde la idea hasta la entrega y el seguimiento posterior.</p>
+            <p>La propuesta no termina en la fabricacion: acompañamos al cliente desde la idea hasta la entrega y el seguimiento posterior.</p>
             <strong>TAPISUR - Historia, oficio y crecimiento</strong>
           </article>
         </div>
