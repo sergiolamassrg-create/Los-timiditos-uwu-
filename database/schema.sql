@@ -155,11 +155,18 @@ CREATE TABLE `contenidos_sitio` (
 --
 
 INSERT INTO `contenidos_sitio` (`id_contenido`, `clave`, `valor`, `tipo`, `descripcion`, `publico`, `creado_en`, `actualizado_en`) VALUES
-(1, 'phone_1', '11 5110-3419', 'telefono', 'Telefono principal', 1, '2026-06-14 06:33:48', NULL),
-(2, 'phone_2', '11 6767-5200', 'telefono', 'Telefono secundario', 1, '2026-06-14 06:33:48', NULL),
-(3, 'whatsapp_number', '5491151103419', 'telefono', 'Numero para enlaces de WhatsApp', 1, '2026-06-14 06:33:48', NULL),
-(4, 'address', 'Juan Esteban Pedernera 1462, Lanus Este, Buenos Aires', 'texto', 'Direccion del local', 1, '2026-06-14 06:33:48', NULL),
-(5, 'instagram_url', 'https://www.instagram.com/tapisur_/', 'url', 'Instagram oficial', 1, '2026-06-14 06:33:48', NULL);
+(1, 'phone_1', '11 5110-3419', 'telefono', 'Telefono principal visible', 1, '2026-06-14 06:33:48', NULL),
+(2, 'phone_2', '11 6767-5200', 'telefono', 'Telefono secundario visible', 1, '2026-06-14 06:33:48', NULL),
+(3, 'whatsapp_number', '5491151103419', 'telefono', 'Numero destino para enlaces de WhatsApp', 1, '2026-06-14 06:33:48', NULL),
+(4, 'address', 'Juan Esteban Pedernera 1462, Lanus Este, Buenos Aires', 'texto', 'Direccion comercial', 1, '2026-06-14 06:33:48', NULL),
+(5, 'instagram_url', 'https://www.instagram.com/tapisur_/', 'url', 'URL del perfil de Instagram', 1, '2026-06-14 06:33:48', NULL),
+(6, 'site_name', 'Tapisur', 'texto', 'Nombre comercial visible del sitio', 1, '2026-06-20 00:00:00', NULL),
+(7, 'contact_email', 'sergio_lamas_93@hotmail.com', 'email', 'Email principal de contacto', 1, '2026-06-20 00:00:00', NULL),
+(8, 'business_hours_weekdays', 'Lunes a Viernes 9:00 a 18:00 hs', 'texto', 'Horario de atencion de lunes a viernes', 1, '2026-06-20 00:00:00', NULL),
+(9, 'business_hours_saturday', 'Sabados 9:00 a 13:00 hs', 'texto', 'Horario de atencion de sabados', 1, '2026-06-20 00:00:00', NULL),
+(10, 'timezone', 'America/Argentina/Buenos_Aires', 'texto', 'Zona horaria de reportes y estadisticas', 1, '2026-06-20 00:00:00', NULL),
+(11, 'meta_title', 'Tapisur | Sillones y muebles a medida', 'texto', 'Titulo SEO principal', 1, '2026-06-20 00:00:00', NULL),
+(12, 'meta_description', 'Tapisur fabrica sillones, muebles a medida, retapizados y restauraciones en Buenos Aires.', 'textarea', 'Descripcion SEO principal', 1, '2026-06-20 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -519,6 +526,23 @@ INSERT INTO `tela_colores` (`id_tela_color`, `id_tela`, `id_color`, `codigo_prov
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `visitas_sitio`
+--
+
+CREATE TABLE `visitas_sitio` (
+  `id_visita` int(11) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `pagina` varchar(160) NOT NULL,
+  `user_agent` varchar(255) DEFAULT NULL,
+  `pais` varchar(80) DEFAULT NULL,
+  `region` varchar(120) DEFAULT NULL,
+  `ciudad` varchar(120) DEFAULT NULL,
+  `fecha_ingreso` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -539,7 +563,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `nombre`, `email`, `usuario`, `password_hash`, `activo`, `creado_en`, `actualizado_en`) VALUES
-(1, 1, 'Administrador Tapisur', 'admin@tapisur.local', 'admin', '$2y$10$LrTO3ZXTzgarIxBhzMPkwuIqwsFXMvl6OW7KQfXyNpNj.a5Bd73uq', 1, '2026-06-14 06:33:47', '2026-06-14 06:48:42'),
+(1, 1, 'Administrador Tapisur', 'admin@tapisur.local', 'admin', '$2y$10$L48vvmY4mGjWKWFclqgN2OfMnRsEXtLU4ksXS3E56DVMYi9V62Epi', 1, '2026-06-14 06:33:47', '2026-06-14 06:48:42'),
 (2, 2, 'Vendedor Demo', 'vendedor@tapisur.local', 'vendedor', '$2y$10$Q4d9vM3fYqXf4m3kN9LrYOwByNnqS.rnpeAq58oPGr.8UIuJXx3va', 1, '2026-06-14 06:33:47', NULL);
 
 -- --------------------------------------------------------
@@ -718,6 +742,15 @@ ALTER TABLE `tela_colores`
   ADD KEY `idx_tela_colores_disponible` (`disponible`);
 
 --
+-- Indices de la tabla `visitas_sitio`
+--
+ALTER TABLE `visitas_sitio`
+  ADD PRIMARY KEY (`id_visita`),
+  ADD KEY `idx_visitas_fecha` (`fecha_ingreso`),
+  ADD KEY `idx_visitas_ip_fecha` (`ip_address`,`fecha_ingreso`),
+  ADD KEY `idx_visitas_pagina` (`pagina`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -776,7 +809,7 @@ ALTER TABLE `colores`
 -- AUTO_INCREMENT de la tabla `contenidos_sitio`
 --
 ALTER TABLE `contenidos_sitio`
-  MODIFY `id_contenido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_contenido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `interacciones`
@@ -837,6 +870,11 @@ ALTER TABLE `telas`
 --
 ALTER TABLE `tela_colores`
   MODIFY `id_tela_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+-- AUTO_INCREMENT de la tabla `visitas_sitio`
+--
+ALTER TABLE `visitas_sitio`
+  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

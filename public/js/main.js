@@ -2,12 +2,15 @@
 const nav = document.getElementById('site-nav');
 const toggle = document.querySelector('.menu-toggle');
 const yearNode = document.getElementById('year');
+const yearMobileNode = document.getElementById('year-mobile');
+const scrollTopButton = document.querySelector('.scroll-top-btn');
 const header = document.querySelector('.site-header');
 const navLinks = nav ? [...nav.querySelectorAll('a[href^="#"]')] : [];
 const pageLinks = nav ? [...nav.querySelectorAll('a:not([href^="#"])')] : [];
 const heroBg = document.querySelector('.hero-bg');
 
 if (yearNode) yearNode.textContent = new Date().getFullYear();
+if (yearMobileNode) yearMobileNode.textContent = new Date().getFullYear();
 
 if (toggle && nav) {
   toggle.addEventListener('click', () => {
@@ -36,6 +39,26 @@ if (toggle && nav) {
   });
 }
 
+
+if (scrollTopButton) {
+  const footerNode = document.querySelector('.footer-mobile-minimal') || document.querySelector('.site-footer');
+
+  const syncScrollTopButton = () => {
+    const nearFooter = footerNode
+      ? footerNode.getBoundingClientRect().top < window.innerHeight * 1.25
+      : false;
+    const shouldShow = window.scrollY > 600 || nearFooter;
+    scrollTopButton.classList.toggle('is-visible', shouldShow);
+  };
+
+  scrollTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  syncScrollTopButton();
+  window.addEventListener('scroll', syncScrollTopButton, { passive: true });
+  window.addEventListener('resize', syncScrollTopButton);
+}
 if (header) {
   const syncHeaderState = () => {
     header.classList.toggle('scrolled', window.scrollY > 12);
@@ -107,3 +130,4 @@ if ('IntersectionObserver' in window) {
 } else {
   revealItems.forEach((item) => item.classList.add('visible'));
 }
+

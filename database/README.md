@@ -1,30 +1,32 @@
 # Base de datos Tapisur
 
-## Archivo principal
+## Archivo oficial
 
-El esquema instalable esta en:
+La base oficial del proyecto esta en:
 
 ```text
 database/schema.sql
 ```
 
-## Instalacion en MySQL
+Este archivo es la referencia unica para adaptar el codigo PHP. Si se recrea la base, importar este SQL y mantener el `.env` apuntando a esa misma base.
+
+## Instalacion en MySQL/XAMPP
 
 Desde la raiz del proyecto:
 
 ```bash
-mysql -u root -p < database/schema.sql
+mysql -u root db_tapisur < database/schema.sql
 ```
 
-Tambien se puede importar desde phpMyAdmin seleccionando el archivo `database/schema.sql`.
+Tambien se puede importar desde phpMyAdmin creando primero la base `db_tapisur` y seleccionando `database/schema.sql`.
 
 ## Configuracion del proyecto
 
-El `.env` deberia quedar asi:
+El `.env` local esperado es:
 
 ```env
 DB_HOST=localhost
-DB_NAME=tapisur_db
+DB_NAME=db_tapisur
 DB_USER=root
 DB_PASS=
 ```
@@ -35,53 +37,38 @@ El SQL crea un usuario inicial para pruebas:
 
 ```text
 Usuario: admin
-Email: admin@tapisur.local
+Clave: Admin123!
 Rol: administrador
-Clave temporal documentada en schema.sql: Cambiar123!
 ```
 
-Importante: cambiar la clave al implementar login real.
+Cambiar esta clave antes de publicar el sistema.
 
-## Tablas principales
+## Tablas principales actuales
 
 - `roles`
-- `permissions`
-- `role_permissions`
-- `users`
-- `user_permissions`
-- `customers`
-- `product_categories`
-- `products`
-- `product_images`
-- `attributes`
-- `attribute_values`
-- `product_attribute_values`
-- `service_categories`
-- `services`
-- `service_images`
-- `sales`
-- `sale_items`
-- `inquiries`
-- `inquiry_status_history`
-- `site_settings`
-- `audit_logs`
+- `usuarios`
+- `clientes`
+- `categorias_producto`
+- `productos`
+- `producto_imagenes`
+- `producto_medidas`
+- `producto_caracteristicas`
+- `telas`
+- `colores`
+- `tela_colores`
+- `producto_tela_colores`
+- `categorias_servicio`
+- `servicios`
+- `servicio_imagenes`
+- `ventas`
+- `venta_detalles`
+- `interacciones`
+- `contenidos_sitio`
 
-## Por que esta estructura
+## Criterio actual
 
-La base esta pensada para el negocio inicial de Tapisur:
-
-- Catalogo sin stock obligatorio.
-- Productos sin precio fijo obligatorio.
-- Servicios con presupuesto personalizado.
-- Clientes internos sin registro publico.
-- Vendedores con telefono y WhatsApp de contacto.
-- Ventas simples para historial y metricas futuras.
-- Consultas por WhatsApp o web como primer paso comercial.
-- Contenido del sitio editable desde panel.
-
-## Siguiente paso tecnico
-
-1. Ajustar `.env.example` a `tapisur_db`.
-2. Crear modelos PHP para `User`, `Product`, `Service`, `Customer`, `Sale` e `Inquiry`.
-3. Implementar login real con `password_verify`.
-4. Reemplazar el catalogo JS estatico por datos desde MySQL.
+- El catalogo publico lee productos desde `productos`, categorias desde `categorias_producto` e imagen principal desde `producto_imagenes`.
+- El ABM de productos no carga telas ni colores por producto.
+- Telas, colores y combinaciones se administran como opciones globales desde `telas`, `colores` y `tela_colores`.
+- `producto_tela_colores` queda disponible en el schema para una etapa futura si se decide limitar variantes por producto.
+- El login admin usa `usuarios` y `roles` con `password_verify`.

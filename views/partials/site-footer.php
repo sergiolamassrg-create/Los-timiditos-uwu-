@@ -1,61 +1,113 @@
-  </main>
+﻿  </main>
 
-  <a class="whatsapp-float wa-link" data-wa-message="Hola TAPISUR, quiero hacer una consulta." target="_blank" rel="noopener noreferrer" href="https://wa.me/5491151103419?text=Hola%20TAPISUR%2C%20quiero%20hacer%20una%20consulta." aria-label="Abrir WhatsApp">
-    <span class="wa__btn_popup_icon" aria-hidden="true"></span>
-    <span class="sr-only">WhatsApp</span>
-  </a>
+  <?php
+    $siteSettings = \App\Core\SiteSettings::all();
+    $siteName = $siteSettings['site_name'] ?? 'Tapisur';
+    $phone1 = $siteSettings['phone_1'] ?? '11 5110-3419';
+    $phone2 = $siteSettings['phone_2'] ?? '11 6767-5200';
+    $address = $siteSettings['address'] ?? 'Juan Esteban Pedernera 1462, Lanús Este, Buenos Aires';
+    $instagram = $siteSettings['instagram_url'] ?? 'https://www.instagram.com/tapisur_/';
+    $whatsapp = \App\Core\SiteSettings::normalizeWhatsapp($siteSettings['whatsapp_number'] ?? '');
+    $weekdayHours = $siteSettings['business_hours_weekdays'] ?? 'Lunes a Viernes 9:00 a 18:00 hs';
+    $saturdayHours = $siteSettings['business_hours_saturday'] ?? 'Sábados 9:00 a 13:00 hs';
+  ?>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
+  <footer class="site-footer site-footer-refined">
+    <div class="container footer-main-panel">
+      <section class="footer-brand-block" aria-label="Información de Tapisur">
         <a class="brand footer-brand" href="/" aria-label="Ir al inicio">
           <img src="/img/logo-icon.png" alt="Logo Tapisur" />
-          <span>Tapisur</span>
+          <span><?= htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8') ?></span>
         </a>
         <p>Fabricamos sillones, muebles a medida, retapizados y restauraciones con dedicación y experiencia.</p>
-      </div>
-      <div>
-        <h3>Navegación</h3>
-        <ul class="footer-list">
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/catalogo">Catálogo</a></li>
-          <li><a href="/servicios">Servicios</a></li>
-          <li><a href="/nosotros">Nosotros</a></li>
-          <li><a href="/contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Contacto</h3>
-        <ul class="footer-list">
-          <li><span class="footer-icon footer-icon-location" aria-hidden="true"></span><span class="address-text">Juan Esteban Pedernera 1462, Lanús Este, Buenos Aires</span></li>
-          <li><span class="footer-icon footer-icon-truck" aria-hidden="true"></span><span>Entregas en todo el país</span></li>
-          <li><span class="footer-icon footer-icon-whatsapp" aria-hidden="true"></span><a class="phone1-link" href="tel:+541151103419">11 5110-3419</a></li>
-          <li><span class="footer-icon footer-icon-instagram" aria-hidden="true"></span><a class="instagram-link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/tapisur_/">Instagram @tapisur_</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Horarios de atención</h3>
-        <ul class="footer-list">
-          <li><span class="footer-icon footer-icon-clock" aria-hidden="true"></span><span>Lunes a Viernes<br>9:00 a 18:00 hs</span></li>
-          <li><span class="footer-icon footer-icon-clock" aria-hidden="true"></span><span>Sábados<br>9:00 a 13:00 hs</span></li>
-        </ul>
-      </div>
+      </section>
+
+      <section class="footer-contact-block" aria-label="Contacto">
+        <div class="footer-item">
+          <span class="footer-icon-pill"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i></span>
+          <span class="address-text"><?= htmlspecialchars($address, ENT_QUOTES, 'UTF-8') ?></span>
+        </div>
+        <div class="footer-item">
+          <span class="footer-icon-pill"><i class="bi bi-telephone" aria-hidden="true"></i></span>
+          <a class="phone1-link" href="tel:<?= htmlspecialchars(\App\Core\SiteSettings::normalizeTel($phone1), ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($phone1, ENT_QUOTES, 'UTF-8') ?></a>
+        </div>
+      </section>
+
+      <section class="footer-hours-block" aria-label="Horarios de atención">
+        <div class="footer-item footer-hours-item">
+          <span class="footer-icon-pill"><i class="bi bi-clock" aria-hidden="true"></i></span>
+          <span><strong>Lunes a Viernes</strong><?= htmlspecialchars(str_replace('Lunes a Viernes', '', $weekdayHours), ENT_QUOTES, 'UTF-8') ?></span>
+        </div>
+        <div class="footer-hours-detail">
+          <strong>Sábados</strong>
+          <span><?= htmlspecialchars(str_replace('Sábados', '', $saturdayHours), ENT_QUOTES, 'UTF-8') ?></span>
+        </div>
+      </section>
+
+      <section class="footer-social-block" aria-label="Redes y consultas">
+        <a class="footer-social-link footer-social-whatsapp wa-link" data-wa-message="Hola TAPISUR, quiero hacer una consulta." target="_blank" rel="noopener noreferrer" href="https://wa.me/<?= htmlspecialchars($whatsapp, ENT_QUOTES, 'UTF-8') ?>?text=Hola%20TAPISUR%2C%20quiero%20hacer%20una%20consulta.">
+          <span class="footer-social-icon"><i class="bi bi-whatsapp" aria-hidden="true"></i></span>
+          <span>WhatsApp</span>
+        </a>
+        <a class="footer-social-link footer-social-instagram instagram-link" target="_blank" rel="noopener noreferrer" href="<?= htmlspecialchars($instagram, ENT_QUOTES, 'UTF-8') ?>">
+          <span class="footer-social-icon"><i class="bi bi-instagram" aria-hidden="true"></i></span>
+          <span>Instagram</span>
+        </a>
+      </section>
     </div>
-    <div class="footer-legal">
+
+    <div class="footer-legal footer-legal-refined">
       <div class="container footer-legal-inner">
-        <p>&copy; <span id="year"></span> Tapisur. Todos los derechos reservados.</p>
+        <p>&copy; <span id="year"></span> <?= htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8') ?>. Todos los derechos reservados.</p>
         <nav class="footer-legal-links" aria-label="Enlaces legales">
           <a href="#">Política de privacidad</a>
-          <a href="/garantia">Garantías</a>
           <a href="/entregas">Entregas</a>
-          <a href="/contacto">Presupuestos</a>
           <a href="#">Términos y condiciones</a>
         </nav>
       </div>
     </div>
   </footer>
+  <footer class="footer-mobile-minimal" aria-label="Pie de página mobile">
+    <div class="footer-mobile-inner">
+      <p class="footer-mobile-location"><i class="bi bi-geo-alt" aria-hidden="true"></i><span>Lanús Este</span></p>
+      <div class="footer-mobile-actions" aria-label="Canales de contacto">
+        <a class="footer-mobile-action footer-mobile-whatsapp wa-link" data-wa-message="Hola TAPISUR, quiero hacer una consulta." target="_blank" rel="noopener noreferrer" href="https://wa.me/<?= htmlspecialchars($whatsapp, ENT_QUOTES, 'UTF-8') ?>?text=Hola%20TAPISUR%2C%20quiero%20hacer%20una%20consulta." aria-label="Contactar por WhatsApp">
+          <i class="bi bi-whatsapp" aria-hidden="true"></i>
+          <span>WhatsApp</span>
+        </a>
+        <a class="footer-mobile-action footer-mobile-instagram instagram-link" target="_blank" rel="noopener noreferrer" href="<?= htmlspecialchars($instagram, ENT_QUOTES, 'UTF-8') ?>" aria-label="Abrir Instagram de Tapisur">
+          <i class="bi bi-instagram" aria-hidden="true"></i>
+          <span>Instagram</span>
+        </a>
+      </div>
+      <div class="footer-mobile-rule" aria-hidden="true"></div>
+      <p class="footer-mobile-copy">&copy; <span id="year-mobile"></span> <?= htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8') ?></p>
+      <nav class="footer-mobile-legal" aria-label="Enlaces legales mobile">
+        <a href="#">Políticas</a>
+        <span aria-hidden="true">·</span>
+        <a href="#">Términos</a>
+        <span aria-hidden="true">·</span>
+        <a href="/entregas">Entregas</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" type="button" aria-label="Subir al inicio">
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+  </button>
 
   <script src="/js/site-defaults.js"></script>
+  <script>
+    window.TAPISUR_SITE_DEFAULTS = {
+      ...(window.TAPISUR_SITE_DEFAULTS || {}),
+      site_name: <?= json_encode($siteName) ?>,
+      phone_1: <?= json_encode($phone1) ?>,
+      phone_2: <?= json_encode($phone2) ?>,
+      address: <?= json_encode($address) ?>,
+      instagram_url: <?= json_encode($instagram) ?>,
+      whatsapp_number: <?= json_encode($whatsapp) ?>
+    };
+  </script>
   <script src="/js/site-content.js"></script>
   <script src="/js/main.js"></script>
   <?php if (!empty($inlineScripts)): ?>
@@ -78,3 +130,7 @@
   <?php endif; ?>
 </body>
 </html>
+
+
+
+
