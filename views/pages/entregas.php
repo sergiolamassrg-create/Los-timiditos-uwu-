@@ -1,164 +1,80 @@
 <?php
-$pageTitle = 'Entregas TAPISUR | Agenda, zonas y fletes';
-$pageDescription = 'Informacion de entregas, fletes, cobertura y agenda de visitas de TAPISUR.';
-$bodyClass = 'page-shell page-entregas';
+$pageTitle = 'Entregas y fletes | Tapisur';
+$pageDescription = 'Información sobre entregas, retiros, fletes y transportes para trabajos de Tapisur en Lanús, GBA, CABA e interior del país.';
+$bodyClass = 'page-shell page-entregas legal-info-page';
 $activePage = 'entregas';
 require __DIR__ . '/../partials/site-header.php';
 ?>
 
-
-    <section class="page-hero">
-      <div class="container page-hero-grid">
-        <div class="page-hero-copy reveal">
-          <p class="kicker">Entregas y fletes</p>
-          <h1>Coordinacion clara para visitas, entregas y envios</h1>
-          <p>Queremos ordenar expectativas desde el primer contacto. Por eso dejamos definidas las condiciones de agenda, cobertura y responsabilidad del flete.</p>
-          <div class="hero-badge-row">
-            <span class="hero-badge">Visitas con agenda</span>
-            <span class="hero-badge">GBA segun zona</span>
-            <span class="hero-badge">Seguimiento directo</span>
+    <section class="section legal-hero delivery-hero">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <p class="kicker">Entregas y coordinación</p>
+            <h1>Coordinamos cada entrega según el trabajo y la zona</h1>
+            <p class="legal-lead">Tapisur trabaja desde Lanús con pedidos a medida, retapizados, reparaciones y restauraciones. La entrega o retiro se define antes de confirmar el trabajo, para que el cliente sepa cómo se mueve el producto y qué costo puede tener.</p>
           </div>
-          <div class="hero-cta">
-            <a class="btn btn-primary wa-link" data-wa-message="Hola TAPISUR, quiero consultar por entregas y fletes." target="_blank" rel="noopener noreferrer" href="#">Consultar por zona</a>
-            <a class="btn btn-secondary" href="/contacto">Hablar con TAPISUR</a>
-          </div>
-          <div class="page-hero-kpis">
-            <article class="page-kpi">
-              <strong>GBA</strong>
-              <span>entregas cotizadas por zona</span>
-            </article>
-            <article class="page-kpi">
-              <strong>Agenda</strong>
-              <span>visitas coordinadas previamente</span>
-            </article>
-            <article class="page-kpi">
-              <strong>5 dias</strong>
-              <span>plazo estimado en algunos casos</span>
-            </article>
+          <div class="col-lg-4">
+            <div class="delivery-highlight">
+              <i class="bi bi-geo-alt" aria-hidden="true"></i>
+              <strong>Lanús, GBA y CABA</strong>
+              <span>También se puede coordinar al interior mediante transportista.</span>
+            </div>
           </div>
         </div>
-        <figure class="page-hero-media page-hero-frame reveal">
-          <img src="/img/catalogo/page11_img03.jpeg" alt="Entrega de mobiliario TAPISUR" loading="lazy" />
-        </figure>
-      </div>
-    </section>
-
-    <section class="motion-strip page-strip" aria-label="Condiciones de entrega de TAPISUR">
-      <div class="motion-strip-track">
-        <span>Agenda previa</span>
-        <span>Entregas en GBA</span>
-        <span>Cotizacion por zona</span>
-        <span>Resto del pais a consulta</span>
-        <span>Flete a cargo del cliente</span>
-        <span>Seguimiento posventa</span>
-        <span>Agenda previa</span>
-        <span>Entregas en GBA</span>
-        <span>Cotizacion por zona</span>
-        <span>Resto del pais a consulta</span>
-        <span>Flete a cargo del cliente</span>
-        <span>Seguimiento posventa</span>
-      </div>
-    </section>
-
-    <section class="section section-tone">
-      <div class="container policy-grid">
-        <article class="policy-card reveal">
-          <h3>Visitas coordinadas</h3>
-          <ul>
-            <li>Las visitas se coordinan por agenda</li>
-            <li>Se confirma disponibilidad por telefono o WhatsApp</li>
-            <li>Cada caso se evalua segun tipo de trabajo</li>
-          </ul>
-        </article>
-        <article class="policy-card reveal">
-          <h3>Entregas en GBA</h3>
-          <ul>
-            <li>Realizamos entregas en GBA</li>
-            <li>El valor se cotiza segun zona</li>
-            <li>La coordinacion se informa junto al presupuesto</li>
-          </ul>
-        </article>
-        <article class="policy-card reveal">
-          <h3>Resto del pais</h3>
-          <ul>
-            <li>Las entregas fuera de GBA se manejan a consulta</li>
-            <li>Se revisa viabilidad logistica segun destino</li>
-            <li>Se acuerdan condiciones antes de confirmar</li>
-          </ul>
-        </article>
       </div>
     </section>
 
     <section class="section-sm">
-      <div class="container feature-band">
-        <article class="feature-lead reveal">
-          <h3>La logistica tambien comunica profesionalismo</h3>
-          <p>Una entrega clara, bien coordinada y con tiempos realistas mejora la experiencia completa. Por eso este modulo explica condiciones antes de confirmar un trabajo.</p>
-        </article>
-        <article class="feature-stat reveal">
-          <strong>Agenda real</strong>
-          <p>coordinamos visitas y entregas segun disponibilidad concreta.</p>
-        </article>
-        <article class="feature-stat reveal">
-          <strong>Info clara</strong>
-          <p>dejamos definida la responsabilidad del flete y la cobertura.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-sm">
-      <div class="container info-grid">
-        <article class="info-card reveal">
-          <h3>Responsabilidad del flete</h3>
-          <p>Los fletes son siempre a cargo del cliente. TAPISUR acompana la coordinacion para que el proceso sea claro y ordenado.</p>
-        </article>
-        <article class="info-card reveal">
-          <h3>Plazos orientativos</h3>
-          <p>En algunos trabajos, el tiempo estimado puede ser de 5 dias habiles. El plazo final depende de complejidad, materiales y agenda.</p>
-        </article>
-        <article class="info-card reveal">
-          <h3>Seguimiento</h3>
-          <p>Mantenemos contacto directo antes, durante y despues de la entrega para resolver dudas y acompanar la posventa.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-sm">
-      <div class="container editorial-grid">
-        <article class="editorial-panel glow-card reveal">
-          <h3>Como ordenamos la coordinacion</h3>
-          <p>La logistica forma parte de la experiencia del cliente. Por eso definimos visitas, coberturas y tiempos con anticipacion para evitar confusiones.</p>
-          <ul class="editorial-points">
-            <li>Las visitas se coordinan por agenda.</li>
-            <li>Los fletes son siempre a cargo del cliente.</li>
-            <li>Las entregas al resto del pais se manejan a consulta.</li>
-          </ul>
-        </article>
-        <div class="spotlight-grid">
-          <article class="spotlight-card reveal">
-            <strong>Cobertura</strong>
-            <h3>Entrega en GBA</h3>
-            <p>Se cotiza segun zona y se informa junto al presupuesto o la confirmacion del trabajo.</p>
-          </article>
-          <article class="spotlight-card reveal">
-            <strong>Seguimiento</strong>
-            <h3>Contacto durante el proceso</h3>
-            <p>Mantenemos comunicacion directa para acompanar al cliente antes, durante y despues de la entrega.</p>
-          </article>
+      <div class="container delivery-flow">
+        <div class="delivery-step">
+          <span>1</span>
+          <div>
+            <h2>Definimos el trabajo</h2>
+            <p>Se confirma si es fabricación nueva, mueble a medida, retapizado, reparación o restauración.</p>
+          </div>
+        </div>
+        <div class="delivery-step">
+          <span>2</span>
+          <div>
+            <h2>Revisamos la zona</h2>
+            <p>Se evalúa si corresponde entrega propia, flete sugerido, retiro por el cliente o transporte externo.</p>
+          </div>
+        </div>
+        <div class="delivery-step">
+          <span>3</span>
+          <div>
+            <h2>Coordinamos fecha</h2>
+            <p>La fecha y franja horaria se acuerdan por WhatsApp o teléfono según agenda del taller.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section-sm">
-      <div class="container cta-panel reveal">
+      <div class="container delivery-options">
         <div>
-          <h3>Consulta tu entrega antes de confirmar</h3>
-          <p>Podemos orientarte rapidamente sobre agenda, cobertura y modalidad segun tu zona y el tipo de trabajo.</p>
+          <p class="kicker">Modalidades</p>
+          <h2>El cliente puede elegir cómo resolver el traslado</h2>
+          <p>La idea es que la logística sea flexible. Según el caso, el cliente puede tomar el flete ofrecido por Tapisur, pasar a retirar el producto terminado, o traer el mueble que necesita reparar, retapizar o restaurar.</p>
         </div>
-        <div class="cta-panel-actions">
-          <a class="btn btn-primary wa-link" data-wa-message="Hola TAPISUR, quiero consultar por entregas y tiempos." target="_blank" rel="noopener noreferrer" href="#">Consultar ahora</a>
-          <a class="btn btn-secondary" href="/garantia/">Ver garantia</a>
+        <ul class="delivery-list">
+          <li><i class="bi bi-truck" aria-hidden="true"></i><span><strong>Flete ofrecido por Tapisur</strong> para Lanús, GBA y CABA, con costo informado antes de confirmar.</span></li>
+          <li><i class="bi bi-box-arrow-in-down" aria-hidden="true"></i><span><strong>Retiro o entrega por cuenta del cliente</strong> cuando prefiere pasar por el taller o enviar su propio flete.</span></li>
+          <li><i class="bi bi-tools" aria-hidden="true"></i><span><strong>Ingreso de muebles a reparar</strong> para trabajos de refacción, restauración o retapizado coordinados previamente.</span></li>
+          <li><i class="bi bi-signpost" aria-hidden="true"></i><span><strong>Interior del país</strong> mediante transportista elegido o coordinado por el cliente. Tapisur no se hace cargo del transporte externo.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container delivery-note">
+        <i class="bi bi-info-circle" aria-hidden="true"></i>
+        <div>
+          <h2>Información importante</h2>
+          <p>Para evitar problemas, el cliente debe avisar medidas del acceso, piso, ascensor, escaleras, restricciones del edificio y cualquier dato que pueda afectar el ingreso o retiro del producto.</p>
         </div>
+        <a class="btn btn-primary wa-link" data-wa-message="Hola Tapisur, quiero consultar por una entrega o retiro." target="_blank" rel="noopener noreferrer" href="#">Consultar por WhatsApp</a>
       </div>
     </section>
 

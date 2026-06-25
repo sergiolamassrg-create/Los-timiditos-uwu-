@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 
 use App\Core\Router;
@@ -13,7 +13,9 @@ $router->get('/contacto','ContactoController@index');
 $router->get('/entregas','EntregasController@index');
 $router->get("/garantia",'GarantiaController@index');
 $router->get("/nosotros","NosotrosController@index");
+$router->get('/privacidad','PrivacidadController@index');
 $router->get("/servicios","ServiciosController@index");
+$router->get('/terminos','TerminosController@index');
 
 $router->group(['prefix'=>"/admin"],function($router){
     $router->get("/login","admin/AdminController@login");

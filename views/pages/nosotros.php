@@ -1,140 +1,92 @@
 <?php
-$pageTitle = 'Nosotros TAPISUR | Historia familiar y marca';
-$pageDescription = 'Historia familiar de TAPISUR y trayectoria en tapiceria, restauracion y fabricacion a medida.';
-$bodyClass = 'page-shell page-nosotros';
+$pageTitle = 'Nosotros Tapisur | Historia familiar y oficio';
+$pageDescription = 'Historia familiar de Tapisur, trayectoria en tapicería, restauración y fabricación de sillones y muebles a medida.';
+$bodyClass = 'page-nosotros about-reference-page';
 $activePage = 'nosotros';
 require __DIR__ . '/../partials/site-header.php';
 ?>
 
-
-    <section class="page-hero">
-      <div class="container page-hero-grid">
-        <div class="page-hero-copy reveal">
-          <p class="kicker">Nosotros</p>
-          <h1>Una historia de familia</h1>
-          <p>TAPISUR nace desde una historia familiar profunda en el rubro. Retoma esa experiencia y la proyecta en una marca actual, cercana y con ambicion de crecimiento.</p>
-          <div class="hero-badge-row">
-            <span class="hero-badge">Historia familiar real</span>
-            <span class="hero-badge">Trabajo artesanal</span>
-            <span class="hero-badge">Marca en crecimiento</span>
-          </div>
-          <div class="hero-cta">
-            <a class="btn btn-primary wa-link" data-wa-message="Hola TAPISUR, quiero conocer mas sobre la empresa." target="_blank" rel="noopener noreferrer" href="#">Hablar con TAPISUR</a>
-            <a class="btn btn-secondary" href="/servicios">Ver servicios</a>
-          </div>
-          <div class="page-hero-kpis">
-            <article class="page-kpi">
-              <strong>+70</strong>
-              <span>anos de historia familiar</span>
-            </article>
-            <article class="page-kpi">
-              <strong>2da</strong>
-              <span>generacion del proyecto</span>
-            </article>
-            <article class="page-kpi">
-              <strong>1 marca</strong>
-              <span>con identidad propia y actual</span>
-            </article>
-          </div>
-        </div>
-        <figure class="page-hero-media page-hero-frame reveal">
-          <img src="/img/catalogo/page11_img02.jpeg" alt="Historia familiar TAPISUR" loading="lazy" />
-        </figure>
-      </div>
-    </section>
-
-    <section class="motion-strip page-strip" aria-label="Historia y crecimiento de TAPISUR">
-      <div class="motion-strip-track">
-        <span>Historia familiar</span>
-        <span>Zona sur</span>
-        <span>La Americana</span>
-        <span>Segunda generacion</span>
-        <span>Marca propia</span>
-        <span>Fabricacion, ventas y posventa</span>
-        <span>Historia familiar</span>
-        <span>Zona sur</span>
-        <span>La Americana</span>
-        <span>Segunda generacion</span>
-        <span>Marca propia</span>
-        <span>Fabricacion, ventas y posventa</span>
-      </div>
-    </section>
-
-    <section class="section section-tone">
+    <section class="about-reference-hero">
       <div class="container">
-        <p class="kicker reveal">Trayectoria</p>
-        <h2 class="reveal">Historia familiar y etapa actual</h2>
-        <div class="timeline">
-          <article class="timeline-card reveal">
-            <strong>Origen familiar</strong>
-            <h3>Mas de 70 anos de historia en el rubro</h3>
-            <p>La familia comenzo hace decadas en tapiceria y mobiliario con La Americana, en zona sur, construyendo experiencia, oficio y reconocimiento.</p>
+        <div class="about-hero-grid">
+          <div class="about-hero-copy">
+            <p class="kicker">Nosotros</p>
+            <h1>Una historia de familia, dedicación y pasión.</h1>
+            <p>Tapisur es un emprendimiento familiar con más de 20 años de experiencia en la fabricación de sillones, muebles a medida, trabajos de tapicería, retapizados, reparaciones y restauraciones.</p>
+            <p>Nos apasiona nuestro oficio y trabajamos cada día para ofrecer muebles únicos, de calidad y hechos a medida para cada cliente.</p>
+            <div class="about-care-card">
+              <span><i class="bi bi-people" aria-hidden="true"></i></span>
+              <div>
+                <strong>Atención personalizada</strong>
+                <small>Te acompañamos en cada paso de tu proyecto, escuchando tus ideas y necesidades.</small>
+              </div>
+            </div>
+          </div>
+          <div class="about-hero-media">
+            <img src="/img/home-hero-reference.png" alt="Sillón Tapisur en living" />
+            <div class="about-quote-card">
+              <i class="bi bi-quote" aria-hidden="true"></i>
+              <p>Creemos que cada mueble cuenta una historia y nuestro compromiso es ayudar a crear la tuya.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-values-section" aria-label="Nuestros valores">
+      <div class="container">
+        <div class="about-values-title">
+          <span></span>
+          <h2>Nuestros valores</h2>
+          <span></span>
+        </div>
+        <div class="about-values-grid">
+          <article>
+            <i class="bi bi-award" aria-hidden="true"></i>
+            <h3>Calidad</h3>
+            <p>Utilizamos materiales de primera calidad para garantizar durabilidad y confort.</p>
           </article>
-          <article class="timeline-card reveal">
-            <strong>Continuidad</strong>
-            <h3>TAPISUR como nueva etapa</h3>
-            <p>TAPISUR representa la segunda generacion del proyecto, con una identidad propia orientada al trabajo artesanal, la personalizacion y la atencion directa.</p>
+          <article>
+            <i class="bi bi-magic" aria-hidden="true"></i>
+            <h3>A medida</h3>
+            <p>Diseñamos y fabricamos cada mueble según tus necesidades y espacio.</p>
           </article>
-          <article class="timeline-card reveal">
-            <strong>Presente</strong>
-            <h3>Marca en crecimiento</h3>
-            <p>Hoy la empresa hace fabricacion, ventas, logistica y posventa, con el objetivo de consolidarse y hacerse conocida por calidad, cumplimiento y cercania.</p>
+          <article>
+            <i class="bi bi-heart" aria-hidden="true"></i>
+            <h3>Pasión</h3>
+            <p>Amamos lo que hacemos y eso se nota en cada detalle de nuestro trabajo.</p>
+          </article>
+          <article>
+            <i class="bi bi-hand-thumbs-up" aria-hidden="true"></i>
+            <h3>Compromiso</h3>
+            <p>Cumplimos con los tiempos acordados y te acompañamos en todo el proceso.</p>
+          </article>
+          <article>
+            <i class="bi bi-people" aria-hidden="true"></i>
+            <h3>Confianza</h3>
+            <p>Construimos relaciones a largo plazo basadas en honestidad y respeto.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section-sm">
-      <div class="container feature-band">
-        <article class="feature-lead reveal">
-          <h3>De la experiencia heredada a una marca con voz propia</h3>
-          <p>La historia familiar le da sustento al proyecto. La marca actual le da direccion, presencia y una forma mas clara de mostrarse frente a clientes, locales y alianzas.</p>
-        </article>
-        <article class="feature-stat reveal">
-          <strong>+70 anos</strong>
-          <p>de oficio familiar en el rubro de tapiceria y mobiliario.</p>
-        </article>
-        <article class="feature-stat reveal">
-          <strong>1 etapa nueva</strong>
-          <p>para crecer con identidad visual, comercial y de servicio.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-sm">
-      <div class="container editorial-grid">
-        <article class="editorial-panel glow-card reveal">
-          <h3>Una historia que sigue creciendo</h3>
-          <p>TAPISUR forma parte de una trayectoria familiar en el rubro. La marca actual no reemplaza esa historia: la continua con una propuesta mas contemporanea, cercana y enfocada en crecer.</p>
-          <ul class="editorial-points">
-            <li>Experiencia heredada del trabajo familiar en zona sur.</li>
-            <li>Una nueva etapa con voz propia, imagen propia y objetivos propios.</li>
-            <li>Compromiso con calidad, cumplimiento y trato humano.</li>
-          </ul>
-        </article>
-        <div class="spotlight-grid">
-          <article class="spotlight-card reveal">
-            <strong>Identidad</strong>
-            <h3>Marca en construccion</h3>
-            <p>Queremos que TAPISUR se haga conocida por una combinacion clara de oficio, diseno y atencion directa.</p>
-          </article>
-          <article class="quote-panel reveal">
-            <p>La propuesta no termina en la fabricacion: acompañamos al cliente desde la idea hasta la entrega y el seguimiento posterior.</p>
-            <strong>TAPISUR - Historia, oficio y crecimiento</strong>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-sm">
-      <div class="container cta-panel reveal">
-        <div>
-          <h3>Una marca que quiere hacerse conocida</h3>
-          <p>Estamos construyendo una presencia mas solida y actual para que la calidad del trabajo tambien se vea en la imagen de la marca.</p>
-        </div>
-        <div class="cta-panel-actions">
-          <a class="btn btn-primary wa-link" data-wa-message="Hola TAPISUR, quiero conocer mas sobre la historia de la marca." target="_blank" rel="noopener noreferrer" href="#">Conocer mas</a>
-          <a class="btn btn-secondary" href="/catalogo">Ver catalogo</a>
+    <section class="about-workshop-section">
+      <div class="container">
+        <div class="about-workshop-grid">
+          <figure>
+            <img src="/img/catalogo/page05_img01.jpeg" alt="Detalle de trabajo artesanal Tapisur" loading="lazy" />
+          </figure>
+          <div class="about-workshop-copy">
+            <p class="kicker">Nuestro taller</p>
+            <h2>Oficio, experiencia y cuidado en cada detalle</h2>
+            <p>Contamos con un equipo de trabajo con experiencia en el oficio. Combinamos técnicas tradicionales con procesos actuales para lograr muebles resistentes, cómodos y con terminaciones prolijas.</p>
+            <div class="about-workshop-points">
+              <span><i class="bi bi-patch-check" aria-hidden="true"></i> Materiales de calidad</span>
+              <span><i class="bi bi-tools" aria-hidden="true"></i> Mano de obra especializada</span>
+              <span><i class="bi bi-rulers" aria-hidden="true"></i> Acabados a medida</span>
+              <span><i class="bi bi-stars" aria-hidden="true"></i> Detalle en cada proyecto</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

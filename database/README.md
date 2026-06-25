@@ -5,7 +5,7 @@
 La base oficial del proyecto esta en:
 
 ```text
-database/schema.sql
+database/db_tapisur.sql
 ```
 
 Este archivo es la referencia unica para adaptar el codigo PHP. Si se recrea la base, importar este SQL y mantener el `.env` apuntando a esa misma base.
@@ -15,10 +15,10 @@ Este archivo es la referencia unica para adaptar el codigo PHP. Si se recrea la 
 Desde la raiz del proyecto:
 
 ```bash
-mysql -u root db_tapisur < database/schema.sql
+mysql -u root db_tapisur < database/db_tapisur.sql
 ```
 
-Tambien se puede importar desde phpMyAdmin creando primero la base `db_tapisur` y seleccionando `database/schema.sql`.
+Tambien se puede importar desde phpMyAdmin creando primero la base `db_tapisur` y seleccionando `database/db_tapisur.sql`.
 
 ## Configuracion del proyecto
 

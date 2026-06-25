@@ -10,8 +10,13 @@
   --admin-copper: #a87555;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: "DM Sans", system-ui, sans-serif;
   color: var(--admin-text);
   background: var(--admin-bg);
@@ -424,6 +429,8 @@ code {
 /* Login admin */
 .login-body {
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
   background: #f7f3ed;
 }
 
@@ -438,6 +445,8 @@ code {
 }
 .login-screen {
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: minmax(390px, 43vw) minmax(0, 1fr);
 }
@@ -447,6 +456,7 @@ code {
   display: grid;
   align-content: center;
   min-height: 100vh;
+  margin: 0;
   overflow: hidden;
   background: url('../img/home-hero-reference.png') center / cover no-repeat;
   color: #f8f2e8;
