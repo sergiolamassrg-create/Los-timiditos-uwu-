@@ -96,8 +96,8 @@ require __DIR__ . '/../partials/site-header.php';
     <section class="home-works" aria-label="Trabajos realizados">
       <div class="container home-works-grid">
         <div class="home-works-copy">
-          <h2>Trabajos que hablan por nosotros</h2>
-          <p>Cada proyecto es único. Conocé algunos de nuestros trabajos realizados.</p>
+          <h2>Transformamos ideas en resultados</h2>
+          <p>Conocé algunos de los trabajos que realizamos para nuestros clientes y la calidad que ofrecemos en cada proyecto.</p>
         </div>
         <figure><img src="/img/home-reference/work-1.png" alt="Sillón claro realizado por Tapisur" loading="lazy" /></figure>
         <figure><img src="/img/home-reference/work-2.png" alt="Sillón chesterfield verde" loading="lazy" /></figure>
