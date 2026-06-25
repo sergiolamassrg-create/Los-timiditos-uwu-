@@ -62,7 +62,7 @@
         <nav class="footer-legal-links" aria-label="Enlaces legales">
           <a href="#">Política de privacidad</a>
           <a href="/entregas">Entregas</a>
-          <a href="#">Términos y condiciones</a>
+          <a href="/terminos">Términos y condiciones</a>
         </nav>
       </div>
     </div>

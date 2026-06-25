@@ -14,6 +14,7 @@ $router->get('/entregas','EntregasController@index');
 $router->get("/garantia",'GarantiaController@index');
 $router->get("/nosotros","NosotrosController@index");
 $router->get("/servicios","ServiciosController@index");
+$router->get("/terminos","TerminosController@index");
 
 $router->group(['prefix'=>"/admin"],function($router){
     $router->get("/login","admin/AdminController@login");
