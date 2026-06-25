@@ -1,114 +1,98 @@
 <?php
-$pageTitle = 'Nosotros TAPISUR | Historia familiar y marca';
-$pageDescription = 'Historia familiar de TAPISUR y trayectoria en tapiceria, restauracion y fabricacion a medida.';
-$bodyClass = 'page-shell page-nosotros';
-$activePage = 'nosotros';
+$pageTitle = 'Términos y condiciones | Tapisur';
+$pageDescription = 'Términos y condiciones generales para consultas, presupuestos, trabajos a medida, servicios y entregas de Tapisur.';
+$bodyClass = 'page-shell legal-info-page';
+$activePage = 'terminos';
 require __DIR__ . '/../partials/site-header.php';
 ?>
 
-
-    <section>
-      <div class="container page-hero-grid">
-        <div class="page-hero-copy reveal">
-          <h1>Términos y Condiciones</h1>
-          <p>Bienvenido a TAPISUR al acceder y utilizar nuestro sitio web, usted acepta los siguentes términos y condiciones. Le recomendamos leerlos cuidadosamente.</p>
-          <div class="hero-badge-row">
-            <span class="hero-badge">Historia familiar real</span>
-            <span class="hero-badge">Trabajo artesanal</span>
-            <span class="hero-badge">Marca en crecimiento</span>
+    <section class="section legal-hero">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <p class="kicker">Términos y condiciones</p>
+            <h1>Condiciones generales de consulta y trabajo</h1>
+            <p class="legal-lead">Tapisur fabrica sillones, muebles a medida, retapizados, reparaciones y restauraciones. La mayoría de los trabajos se presupuestan según necesidad, medidas, materiales y complejidad.</p>
           </div>
-          <div class="page-hero-kpis">
-            <article class="page-kpi">
-              <strong>+70</strong>
-              <span>anos de historia familiar</span>
-            </article>
-            <article class="page-kpi">
-              <strong>2da</strong>
-              <span>generacion del proyecto</span>
-            </article>
-            <article class="page-kpi">
-              <strong>1 marca</strong>
-              <span>con identidad propia y actual</span>
-            </article>
+          <div class="col-lg-4">
+            <div class="legal-summary-card">
+              <i class="bi bi-clipboard-check" aria-hidden="true"></i>
+              <div>
+                <strong>Presupuesto personalizado</strong>
+                <span>Cada trabajo se confirma con condiciones acordadas previamente.</span>
+              </div>
+            </div>
           </div>
         </div>
-        <figure class="page-hero-media page-hero-frame reveal">
-          <img src="/img/catalogo/page11_img02.jpeg" alt="Historia familiar TAPISUR" loading="lazy" />
-        </figure>
       </div>
     </section>
 
-    <section class="section section-tone">
+    <section class="section-sm legal-info-section">
       <div class="container">
-        <h3 class="reveal">Términos y Condiciones de tapisur</h3>
-        <div class="timeline">
-          <article class="timeline-card reveal">
-            <img src="/public/img/sitio-web.png" alt="icon">
-            <strong>Uso del sitio</strong>
-            <h4>1. INFORMACIÓN GENERAL</h4>
-            <p>Este sitio web es operado por tapisur. En todo el sitio, los términos "nosotros", "nos" y "nuestro" se refieren a tapisur.
-            <br>Sitio web: www.tapisur.com 
-            <br>Email de contacto: sergio.lamas.srg@gmail.com 
-            <br>Dirección: 
-            <hr>
-            <h4>2. PRODUCTOS Y SERVICIOS</h4>
-             <p>Nos esforzamos por mostrar con la mayor precisión los colores y las imágenes de nuestros productos que aparecen en la tienda. No podemos garantizar que la visualización de cualquier color en su monitor sea exacta.</p>
-             <hr>
-            <h4>3. PRECIOS Y PAGOS</h4>
-            
-            <p>Todos los precios están sujetos a cambios sin previo aviso. Los precios mostrados incluyen IVA cuando corresponda.</p>
-            <hr>
-            <h4>4. ENVÍOS</h4>
-            <p>El tiempo estimado de envío es de 3-5 días hábiles. Los tiempos de entrega son estimados y no podemos garantizar entregas en fechas específicas.</p>
-            <hr>
-            <h4>5. POLÍTICA DE DEVOLUCIONES</h4>
-            <p> devoluciones dentro de los 14 días posteriores a la recepción del producto.</p>
-            <hr>
-
-            <h4>5.1 PROCEDIMIENTO DE DEVOLUCIÓN</h4>
-            <ol>
-                <li><p>Devolución del dinero (solo aplica para casos de garantía y ley de retracto):
-                    A través de transferencia (cuenta de ahorros, cuenta corriente, ahorro a la mano): se realiza aproximadamente dentro de los cinco días hábiles siguientes de recibir el producto nuevamente en nuestra bodega.</p></li>
-                <li>
-                    <p>A través de reversión del pago: quince días hábiles después de recibir el producto en nuestra bodega. Ésta reversión corre por cuenta y orden de tu entidad bancaria, cualquier duda debes comunicarte directamente con ellos.</p>
-                </li>
-                <li>
-                    <p> Cambio del producto (Sujeto a disponibilidad de inventario en el momento del cambio). Sólo se podrán realizar cambios por productos con valor igual o inferior al original y la diferencia en caso de aplicar, se entregará en un cupón para una nueva compra en la tienda online. En caso de no contar con disponibilidad para el cambio, se entregará el valor del producto(s) en un cupón para una nueva compra.</p>
-                </li>
-                <li>
-                    <p>Cupón para realizar una nueva compra (Este cupón tiene validez por seis meses a partir de la fecha de creación).</p>
-                </li>
-                <li>
-                    <p>Cambio del producto (Sujeto a disponibilidad de inventario en el momento del cambio). Sólo se podrán realizar cambios por productos con valor igual o inferior al original y la diferencia en caso de aplicar, se entregará en un cupón para una nueva compra en la tienda online. En caso de no contar con disponibilidad para el cambio, se entregará el valor del producto(s) en un cupón para una nueva compra.</p></li>
-                <li>
-                    <p>Cupón para realizar una nueva compra (Este cupón tiene validez por seis meses a partir de la fecha de creación).</p>
-                </li>
-            </ol>
-            <hr>
-            <h4>5.2 CONDICIONES DEL PRODUCTO PARA DEVOLUCIÓN</h4>
-            <p>El producto deberá devolverse en óptimas condiciones, sin rastros de haber sido utilizado, con las etiquetas originales o en su defecto, si ya fueron retiradas, debes introducirlas en el empaque. Una vez recibido el producto en nuestra bodega, verificaremos las condiciones del mismo y de acuerdo con los resultados, se te enviará un producto nuevo o se te entregará un cupón para una nueva compra.</p>
-            <hr>
-            <h4>6. PRIVACIDAD Y PROTECCIÓN DE DATOS</h4>
-            <p>Nos comprometemos a proteger su privacidad. La información personal que nos proporcione se utilizará únicamente para procesar su pedido y mejorar su experiencia de compra.</p>
-            <hr>
-            <h4>7. MODIFICACIONES DE LOS TÉRMINOS</h4>
-            <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio web.</p>
-            <br>
-            <strong>Última actualización: 25/6/2026 </strong>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <article class="legal-info-card h-100">
+              <i class="bi bi-rulers" aria-hidden="true"></i>
+              <h2>Trabajos a medida</h2>
+              <p>Las medidas, telas, colores, terminaciones y características se definen antes de confirmar el pedido.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="legal-info-card h-100">
+              <i class="bi bi-receipt" aria-hidden="true"></i>
+              <h2>Presupuestos</h2>
+              <p>Los valores informados pueden variar si cambia el alcance, el material elegido, el estado del producto o la logística necesaria.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="legal-info-card h-100">
+              <i class="bi bi-tools" aria-hidden="true"></i>
+              <h2>Servicios</h2>
+              <p>Retapizados, restauraciones y reparaciones pueden requerir revisión previa para estimar costo, tiempos y viabilidad.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section-sm">
-      <div class="container cta-panel reveal">
-        <div>
-          <h3>Una marca que quiere hacerse conocida</h3>
-          <p>Estamos construyendo una presencia mas solida y actual para que la calidad del trabajo tambien se vea en la imagen de la marca.</p>
+      <div class="container legal-content-panel">
+        <h2>Condiciones comerciales generales</h2>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <ul class="legal-check-list">
+              <li>La web es informativa y no funciona como carrito de compra ni checkout online.</li>
+              <li>Las consultas se responden principalmente por WhatsApp, teléfono o Instagram.</li>
+              <li>Los precios publicados, si existieran, son orientativos salvo confirmación expresa.</li>
+              <li>Los pedidos personalizados pueden requerir seña, confirmación de materiales y validación de medidas.</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <ul class="legal-check-list">
+              <li>Los tonos de telas, colores o texturas pueden variar entre pantalla, foto y material real.</li>
+              <li>Los plazos se informan según agenda, disponibilidad de materiales y complejidad del trabajo.</li>
+              <li>Los cambios solicitados luego de confirmar un pedido pueden modificar costo o fecha estimada.</li>
+              <li>La entrega o retiro se coordina según lo indicado en la sección de entregas.</li>
+            </ul>
+          </div>
         </div>
-        <div class="cta-panel-actions">
-          <a class="btn btn-primary wa-link" data-wa-message="Hola TAPISUR, quiero conocer mas sobre la historia de la marca." target="_blank" rel="noopener noreferrer" href="#">Conocer mas</a>
-          <a class="btn btn-secondary" href="/catalogo">Ver catalogo</a>
-        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container legal-content-panel legal-light-panel">
+        <h2>Garantía, revisión y conformidad</h2>
+        <p>Los trabajos realizados por Tapisur cuentan con garantía de 1 año sobre estructura y 6 meses sobre costura. La garantía aplica sobre fallas vinculadas al trabajo realizado, siempre que el producto haya tenido un uso adecuado.</p>
+        <p>Una vez realizado y confirmado el pedido, no se aceptan devoluciones por arrepentimiento, ya que se trata de trabajos hechos a medida o personalizados según lo solicitado por el cliente.</p>
+        <p>Si Tapisur no cumpliera con lo acordado por un error interno en la fabricación, medida, terminación o ejecución del trabajo, se acepta la devolución del producto para corregirlo y entregar el producto solicitado según las condiciones pactadas.</p>
+        <p>Los daños por uso indebido, humedad, exposición inadecuada, manipulación externa, transporte de terceros o desgaste normal pueden quedar fuera de una revisión sin cargo.</p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container legal-note">
+        <i class="bi bi-info-circle" aria-hidden="true"></i>
+        <p>Estos términos son una base informativa para ordenar la relación comercial. Deben ser revisados por los responsables de Tapisur antes de publicarse como versión definitiva.</p>
       </div>
     </section>
 

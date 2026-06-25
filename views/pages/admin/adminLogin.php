@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $e = fn($value) => htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 $lockedUntil = (int) ($lockedUntil ?? 0);
 $isLocked = $lockedUntil > time();
@@ -19,7 +19,7 @@ $remainingAttempts = (int) ($remainingAttempts ?? 3);
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="stylesheet" href="/css/admin.css?v=<?= filemtime(__DIR__ . '/../../../public/css/admin.css') ?>" />
 </head>
 <body class="login-body">
   <main class="login-screen">

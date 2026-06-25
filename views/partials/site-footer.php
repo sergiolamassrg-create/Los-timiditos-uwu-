@@ -1,4 +1,4 @@
-﻿  </main>
+  </main>
 
   <?php
     $siteSettings = \App\Core\SiteSettings::all();
@@ -60,7 +60,7 @@
       <div class="container footer-legal-inner">
         <p>&copy; <span id="year"></span> <?= htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8') ?>. Todos los derechos reservados.</p>
         <nav class="footer-legal-links" aria-label="Enlaces legales">
-          <a href="#">Política de privacidad</a>
+          <a href="/privacidad">Política de privacidad</a>
           <a href="/entregas">Entregas</a>
           <a href="/terminos">Términos y condiciones</a>
         </nav>
@@ -83,9 +83,9 @@
       <div class="footer-mobile-rule" aria-hidden="true"></div>
       <p class="footer-mobile-copy">&copy; <span id="year-mobile"></span> <?= htmlspecialchars($siteName, ENT_QUOTES, 'UTF-8') ?></p>
       <nav class="footer-mobile-legal" aria-label="Enlaces legales mobile">
-        <a href="#">Políticas</a>
+        <a href="/privacidad">Políticas</a>
         <span aria-hidden="true">·</span>
-        <a href="#">Términos</a>
+        <a href="/terminos">Términos</a>
         <span aria-hidden="true">·</span>
         <a href="/entregas">Entregas</a>
       </nav>
