@@ -1,4 +1,28 @@
-﻿import { CATALOG } from './catalog-data.js';
+﻿/**
+ * catalogo-module.js
+ *
+ * Módulo ES que gestiona la página de catálogo del sitio público.
+ * Implementa un sistema completo de filtrado y renderizado de productos
+ * con interacción por WhatsApp.
+ *
+ * Funcionalidades:
+ *  - Filtrado por categoría, material, features (checkboxes)
+ *  - Búsqueda por texto libre
+ *  - Filtro por cantidad de asientos
+ *  - Ordenamiento (nombre, asientos, destacados)
+ *  - Toggle "solo destacados"
+ *  - Renderizado dinámico de cards con selectores de material/color/medida
+ *  - Modal de detalle de producto
+ *  - Envío de consulta por WhatsApp con datos de configuración elegida
+ *  - Responsive: panel de filtros colapsable en mobile
+ *
+ * Fuente de datos:
+ *  - Prioridad 1: window.__TAPISUR_CATALOG__ (inyectado desde PHP/DB)
+ *  - Prioridad 2: CATALOG exportado de catalog-data.js (fallback estático)
+ *
+ * Dependencias: catalog-data.js (ES module import)
+ */
+import { CATALOG } from './catalog-data.js';
 
 const filtersForm = document.getElementById('catalogFilters');
 const ACTIVE_CATALOG =

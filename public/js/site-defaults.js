@@ -1,3 +1,15 @@
+/**
+ * site-defaults.js
+ *
+ * Define los valores por defecto del contenido del sitio como variables globales.
+ * Estos valores se usan como fallback cuando no hay datos personalizados
+ * almacenados en localStorage (modificados desde el admin).
+ *
+ * Consumido por: site-content.js (aplica valores al DOM)
+ *
+ * @global {string} window.TAPISUR_STORAGE_KEY - Clave de localStorage para contenido admin.
+ * @global {Object} window.TAPISUR_SITE_DEFAULTS - Mapa de valores por defecto del sitio.
+ */
 window.TAPISUR_STORAGE_KEY = 'tapisur_admin_content_v1';
 window.TAPISUR_SITE_DEFAULTS = {
   site_name: 'Tapisur',

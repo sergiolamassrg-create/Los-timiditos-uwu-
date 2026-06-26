@@ -1,4 +1,28 @@
-﻿const ASSET_BASE = window.__APP_BASE_PATH__ || "";
+﻿/**
+ * catalog-data.js
+ *
+ * Módulo ES que exporta el catálogo de productos como array estático.
+ * Sirve como fallback cuando la base de datos no está disponible o
+ * durante desarrollo sin conexión a MySQL.
+ *
+ * Estructura de cada item:
+ *  @typedef {Object} CatalogItem
+ *  @property {string} id          - Identificador único slug del producto.
+ *  @property {string} name        - Nombre visible del producto.
+ *  @property {string} category    - Categoría principal.
+ *  @property {string} subcategory - Subcategoría o agrupación.
+ *  @property {string} image       - Ruta a la imagen principal.
+ *  @property {number} seats       - Cantidad de asientos (0 para no-asiento).
+ *  @property {boolean} featured   - Si es producto destacado.
+ *  @property {string[]} features  - Lista de características/tags.
+ *  @property {string[]} materials - Materiales disponibles.
+ *  @property {string[]} colors    - Colores disponibles.
+ *  @property {string[]} sizes     - Medidas sugeridas.
+ *  @property {string} description - Descripción breve.
+ *
+ * Consumido por: catalogo-module.js
+ */
+const ASSET_BASE = window.__APP_BASE_PATH__ || "";
 const asset = (path) => `${ASSET_BASE}${path}`;
 
 export const CATALOG = [

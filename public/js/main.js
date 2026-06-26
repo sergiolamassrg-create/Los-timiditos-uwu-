@@ -1,4 +1,18 @@
-﻿const revealItems = document.querySelectorAll('.reveal');
+﻿/**
+ * main.js
+ *
+ * Script principal del sitio público. Gestiona interacciones UI globales:
+ *  - Menú mobile (toggle, cierre por click externo/Escape)
+ *  - Header con efecto "scrolled" al hacer scroll
+ *  - Botón scroll-to-top con visibilidad dinámica
+ *  - Navegación activa según sección visible (scroll spy)
+ *  - Navegación activa según pathname actual
+ *  - Parallax sutil en hero background
+ *  - Reveal animations con IntersectionObserver
+ *
+ * Dependencias: ninguna (vanilla JS). Se carga en site-footer.php.
+ */
+const revealItems = document.querySelectorAll('.reveal');
 const nav = document.getElementById('site-nav');
 const toggle = document.querySelector('.menu-toggle');
 const yearNode = document.getElementById('year');
