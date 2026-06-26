@@ -4,11 +4,11 @@ $pageDescription = 'Explora el catalogo completo de TAPISUR con filtros por cate
 $ogImage = '/img/catalogo/page11_img03.jpeg';
 $bodyClass = 'catalog-page';
 $activePage = 'catalogo';
-$extraStyles = ['/css/catalogo-module.css'];
+$extraStyles = ['/css/catalogo-module.css?v=' . filemtime(__DIR__ . '/../../public/css/catalogo-module.css')];
 $inlineScripts = [
   'window.__TAPISUR_CATALOG__ = ' . json_encode($catalogItems ?? [], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) . ';',
 ];
-$extraScripts = [['src' => '/js/catalogo-module.js', 'type' => 'module']];
+$extraScripts = [['src' => '/js/catalogo-module.js?v=' . filemtime(__DIR__ . '/../../public/js/catalogo-module.js'), 'type' => 'module']];
 require __DIR__ . '/../partials/site-header.php';
 ?>
 
@@ -25,7 +25,7 @@ require __DIR__ . '/../partials/site-header.php';
       <aside class="filters">
         <div class="filters-head">
           <h2>Filtros</h2>
-          <button id="filtersToggle" class="btn btn-secondary filters-toggle" type="button" aria-expanded="true" aria-controls="filtersBody">Mostrar/Ocultar</button>
+          <button id="filtersToggle" class="btn btn-secondary filters-toggle" type="button" aria-expanded="true" aria-controls="filtersBody">Filtrar</button>
         </div>
         <form id="catalogFilters" novalidate>
           <div id="filtersBody">
