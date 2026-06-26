@@ -4,8 +4,35 @@ namespace App\Core;
 
 use PDOException;
 
+/**
+ * SiteAnalytics
+ *
+ * Sistema de analíticas básicas del sitio.
+ * Registra cada visita a páginas públicas en la tabla `visitas_sitio`
+ * y provee un resumen diario para el panel de administración.
+ *
+ * Datos capturados por visita:
+ *  - IP del cliente (soporta proxies y Cloudflare)
+ *  - Página visitada
+ *  - User agent
+ *  - Geolocalización básica (local/sin dato para IPs privadas)
+ *
+ * Exclusiones automáticas:
+ *  - Requests al panel admin (/admin/*)
+ *  - Requests de assets estáticos (css, js, imágenes, fonts)
+ */
 class SiteAnalytics
 {
+    /**
+     * Registra una visita a una página del sitio.
+     *
+     * Se invoca automáticamente desde site-header.php en cada
+     * carga de página pública. No registra visitas de admin ni assets.
+     *
+     * @param string $page Identificador de la página (ej: 'inicio', 'catalogo', 'contacto').
+     *
+     * @return void
+     */
     public static function trackPageView(string $page): void
     {
         if (self::isAdminRequest() || self::isAssetRequest()) {
@@ -35,6 +62,17 @@ class SiteAnalytics
         }
     }
 
+    /**
+     * Genera un resumen de las visitas del día actual.
+     *
+     * Usado por el dashboard del panel admin para mostrar:
+     *  - Total de page views del día
+     *  - Cantidad de IPs únicas
+     *  - Cantidad de IPs con más de una visita (repetidas)
+     *  - Detalle de las últimas 30 IPs con sus datos
+     *
+     * @return array Estructura con claves: totalViews, uniqueIps, repeatedIps, rows.
+     */
     public static function todaySummary(): array
     {
         $summary = [
@@ -90,6 +128,17 @@ class SiteAnalytics
         return $summary;
     }
 
+    /**
+     * Obtiene la IP real del cliente.
+     *
+     * Revisa headers en orden de prioridad:
+     *  1. HTTP_CF_CONNECTING_IP (Cloudflare)
+     *  2. HTTP_X_FORWARDED_FOR (proxies)
+     *  3. HTTP_X_REAL_IP (nginx)
+     *  4. REMOTE_ADDR (conexión directa)
+     *
+     * @return string IP validada del cliente o '0.0.0.0' como fallback.
+     */
     private static function clientIp(): string
     {
         foreach (['HTTP_CF_CONNECTING_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_REAL_IP', 'REMOTE_ADDR'] as $key) {
@@ -107,6 +156,17 @@ class SiteAnalytics
         return '0.0.0.0';
     }
 
+    /**
+     * Determina la ubicación geográfica a partir de una IP.
+     *
+     * Actualmente solo distingue IPs locales/privadas (devuelve 'Local')
+     * del resto (devuelve 'Sin dato'). Preparado para integrar
+     * un servicio de geolocalización externo a futuro.
+     *
+     * @param string $ip Dirección IP a geolocalizar.
+     *
+     * @return array Mapa con claves: pais, region, ciudad.
+     */
     private static function locationFromIp(string $ip): array
     {
         if ($ip === '::1' || str_starts_with($ip, '127.') || str_starts_with($ip, '192.168.') || str_starts_with($ip, '10.')) {
@@ -116,6 +176,11 @@ class SiteAnalytics
         return ['pais' => 'Sin dato', 'region' => 'Sin dato', 'ciudad' => 'Sin dato'];
     }
 
+    /**
+     * Verifica si el request actual es al panel de administración.
+     *
+     * @return bool True si la URI contiene '/admin'.
+     */
     private static function isAdminRequest(): bool
     {
         $path = parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH) ?: '';
@@ -123,6 +188,11 @@ class SiteAnalytics
         return str_contains($path, '/admin');
     }
 
+    /**
+     * Verifica si el request actual es un asset estático.
+     *
+     * @return bool True si la URI termina en extensión de archivo estático.
+     */
     private static function isAssetRequest(): bool
     {
         $path = parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH) ?: '';
