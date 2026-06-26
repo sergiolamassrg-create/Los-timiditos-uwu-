@@ -130,7 +130,10 @@
   <?php endif; ?>
 </body>
 </html>
-
+<!-- Botón Flotante de WhatsApp para TAPISUR -->
+<a href="https://wa.me/5491151103419" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp a TAPISUR">
+  <i class="bi bi-whatsapp"></i>
+</a>
 
 
 

@@ -220,20 +220,42 @@ header .site-nav a,
   font-size: 0.88rem !important;
 }
 
-/* Empujar el menú hacia la derecha */
-header .container,
-.nav-wrap .container {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 100% !important;
+/* ==========================================
+   ¡ACÁ EMPIEZA EL CAMBIO CON LA MEDIA QUERY!
+   ========================================== */
+
+/* Solo para pantallas de escritorio (Computadoras) */
+@media (min-width: 992px) {
+  header .container,
+  .nav-wrap .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  header .site-nav, 
+  .site-nav {
+    margin-left: auto !important; /* Fuerza al menú a irse a la derecha en PC */
+    display: flex !important;
+    gap: 1.5rem !important; 
+    position: static !important; /* Evita que flote como en mobile */
+    background: transparent !important; /* Saca el fondo blanco de celular */
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
 }
 
-header .site-nav, 
-.site-nav {
-  margin-left: auto !important; /* Fuerza al menú a irse a la derecha */
-  display: flex !important;
-  gap: 1.5rem !important; /* Espaciado entre los links (Inicio, Catálogo, etc.) */
+/* Solo para pantallas Mobile / Tablets (Celulares) */
+@media (max-width: 991.98px) {
+  header .nav-wrap,
+  .nav-wrap {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
 }
 
 .site-nav {
@@ -4754,4 +4776,195 @@ h3 {
 .motion-strip::after {
   right: 0;
   background: linear-gradient(-90deg, #fbf7f0 0%, rgba(251, 247, 240, 0) 100%) !important;
+}
+
+/* ==========================================================================
+   AJUSTES GENERALES - SECCIÓN NOSOTROS (TAPISUR)
+   ========================================================================== */
+
+/* 1. Subir la sección para que la caja verde entre en pantalla */
+.page-shell.page-services + section,
+main > section:first-of-type,
+.page-hero {
+  padding-top: 2rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+/* Achicamos un pelín el h1 del título para ganar valiosos píxeles hacia arriba */
+.page-hero h1 {
+  font-size: clamp(2.3rem, 4vw, 3.8rem) !important;
+  margin-bottom: 0.8rem !important;
+}
+
+/* Evitar que la imagen del sillón empuje todo tan abajo */
+.page-hero-media img,
+.page-hero-frame img {
+  max-height: 380px !important;
+  object-fit: cover !important;
+}
+
+
+/* 2. Arreglo definitivo para las columnas de "Nuestros valores" */
+/* Buscamos el contenedor que tiene las líneas divisorias verticales sueltas */
+section:has(h2) {
+  /* Si el contenedor general de las columnas usa flex o grid, le damos aire */
+  .container {
+    max-width: 1200px !important;
+    width: 100% !important;
+  }
+}
+
+/* Forzar a que la fila de valores deje de apretar los textos hacia abajo */
+section h2 + div,
+section h2 + .row,
+section:has(h2) .grid,
+section:has(h2) [class*="grid"],
+section:has(h2) [class*="row"] {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) !important;
+  gap: 1.25rem !important;
+  align-items: start !important;
+  border: none !important; /* Sacamos esa línea gris colapsada de fondo */
+}
+
+/* Formatear los bloques individuales de cada valor (Calidad, A medida, Pasión...) */
+section:has(h2) div > div,
+section:has(h2) div > article {
+  border-left: none !important; /* Sacamos la línea vertical que encierra el texto */
+  border-right: none !important;
+  background: #fffaf4 !important; /* Le damos un fondo crema sutil en bloque */
+  border: 1px solid rgba(122, 101, 82, 0.15) !important; /* Bordes suaves */
+  border-radius: 8px !important;
+  padding: 1.2rem !important;
+  box-shadow: 0 4px 10px rgba(75, 51, 31, 0.03) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+/* Hacer que el texto fluya de forma horizontal normal y no una palabra por línea */
+section:has(h2) div > div p,
+section:has(h2) div > article p,
+section:has(h2) p {
+  white-space: normal !important;
+  word-break: break-word !important;
+  font-size: 0.9rem !important;
+  line-height: 1.45 !important;
+  color: #5a4a3a !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+/* Alinear títulos con sus íconos */
+section:has(h2) h3 {
+  font-size: 1.1rem !important;
+  margin-bottom: 0.2rem !important;
+  color: #1f1812 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+}
+
+/* Botón Flotante de WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: #fff !important;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+  background-color: #20ba5a;
+}
+
+header .site-nav a, 
+.site-nav a {
+  position: relative;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+header .site-nav a::after, 
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent, #6b4f35);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+header .site-nav a:hover::after, 
+.site-nav a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* ==========================================================================
+   OPTIMIZACIÓN RESPONSIVE: CATÁLOGO EN CELULARES
+   ========================================================================== */
+
+/* Solo para pantallas Mobile / Tablets (Menos de 992px) */
+@media (max-width: 991.98px) {
+  
+  /* 1. Forzar que la grilla de productos pase a 1 o 2 columnas en vez de apretarse de a 4 */
+  .catalog-page .products-grid,
+  .products-grid,
+  [class*="product-grid"] {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important; /* Muestra 2 productos cómodos por fila */
+    gap: 1rem !important;
+    padding: 1rem !important;
+    width: 100% !important;
+  }
+
+  /* 2. Arreglar las tarjetas de producto para que no se deformen las fotos */
+  .product-card,
+  [class*="product-card"] {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    background: #ffffff !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+  }
+
+  .product-card img,
+  [class*="product-card"] img {
+    height: 160px !important; /* Alto fijo controlado para pantallas chicas */
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* 3. Si tenés una barra lateral de filtros, la mandamos arriba o abajo para que no asfixie a los productos */
+  .catalog-layout,
+  .catalog-container {
+    display: flex !important;
+    flex-direction: column !important; /* Apila filtros arriba de los productos */
+    gap: 1.5rem !important;
+  }
+
+  .catalog-sidebar,
+  .filters-panel {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
 }
