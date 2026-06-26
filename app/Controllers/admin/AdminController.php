@@ -9,8 +9,35 @@ use App\Core\SiteSettings;
 use PDO;
 use PDOException;
 
+/**
+ * AdminController
+ *
+ * Controlador principal del panel de administración.
+ * Gestiona autenticación, CRUD de productos, telas, colores,
+ * combinaciones tela-color, usuarios, configuración del sitio
+ * y dashboard con estadísticas y analíticas.
+ *
+ * Seguridad:
+ *  - Autenticación por sesión PHP nativa.
+ *  - Protección brute-force: 3 intentos, bloqueo 15 minutos.
+ *  - Regeneración de session ID en login/logout.
+ *  - Todos los métodos protegidos con requireAdmin().
+ *
+ * Rutas asociadas: grupo /admin (ver routes/web.php)
+ */
 class AdminController extends Controller
 {
+    // ─────────────────────────────────────────────────────────────
+    // AUTENTICACIÓN
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Muestra el formulario de login.
+     *
+     * Si el usuario ya está autenticado, redirige al listado de productos.
+     *
+     * @return void
+     */
     public function login()
     {
         if ($this->isLoggedIn()) {
@@ -27,6 +54,15 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * Procesa el intento de login.
+     *
+     * Valida credenciales contra la tabla `usuarios`, verifica
+     * bloqueo por intentos fallidos, y regenera el session ID
+     * en login exitoso.
+     *
+     * @return void Redirige a /admin/productos (éxito) o /admin/login (error).
+     */
     public function authenticate()
     {
         $user = trim($_POST['username'] ?? '');
@@ -75,7 +111,11 @@ class AdminController extends Controller
         return $this->redirect('/admin/productos');
     }
 
-
+    /**
+     * Verifica si el login está bloqueado por intentos fallidos.
+     *
+     * @return bool True si el bloqueo sigue activo (15 min desde el 3er fallo).
+     */
     private function isLoginLocked(): bool
     {
         $lockedUntil = (int) ($_SESSION['admin_login_locked_until'] ?? 0);
@@ -92,6 +132,11 @@ class AdminController extends Controller
         return true;
     }
 
+    /**
+     * Registra un intento de login fallido y aplica bloqueo si corresponde.
+     *
+     * @return int Intentos restantes (0 = bloqueado).
+     */
     private function registerFailedLogin(): int
     {
         $attempts = (int) ($_SESSION['admin_login_attempts'] ?? 0) + 1;
@@ -105,6 +150,11 @@ class AdminController extends Controller
         return max(0, 3 - $attempts);
     }
 
+    /**
+     * Calcula los intentos de login restantes antes del bloqueo.
+     *
+     * @return int Número de intentos disponibles (0 a 3).
+     */
     private function remainingLoginAttempts(): int
     {
         if ($this->isLoginLocked()) {
@@ -114,11 +164,23 @@ class AdminController extends Controller
         return max(0, 3 - (int) ($_SESSION['admin_login_attempts'] ?? 0));
     }
 
+    /**
+     * Limpia los contadores de intentos fallidos de login.
+     *
+     * @return void
+     */
     private function clearLoginAttempts(): void
     {
         unset($_SESSION['admin_login_attempts'], $_SESSION['admin_login_locked_until']);
     }
 
+    /**
+     * Cierra la sesión del administrador.
+     *
+     * Destruye los datos de sesión del admin y regenera el session ID.
+     *
+     * @return void Redirige a /admin/login.
+     */
     public function logout()
     {
         unset($_SESSION['admin_user']);
@@ -127,46 +189,102 @@ class AdminController extends Controller
         return $this->redirect('/admin/login');
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // MÓDULOS DEL PANEL (vistas principales)
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Muestra el dashboard con estadísticas y analíticas del día.
+     *
+     * @return void
+     */
     public function dashboard()
     {
         return $this->adminModule('dashboard');
     }
 
+    /**
+     * Redirige /admin/catalogo a /admin/productos.
+     *
+     * @return void
+     */
     public function catalog()
     {
         return $this->redirect('/admin/productos');
     }
 
+    /**
+     * Muestra el listado de productos con búsqueda.
+     *
+     * @return void
+     */
     public function products()
     {
         return $this->adminModule('productos');
     }
 
+    /**
+     * Muestra la gestión de telas.
+     *
+     * @return void
+     */
     public function fabrics()
     {
         return $this->adminModule('telas');
     }
 
+    /**
+     * Muestra la gestión de colores.
+     *
+     * @return void
+     */
     public function colors()
     {
         return $this->adminModule('colores');
     }
 
+    /**
+     * Muestra la gestión de combinaciones tela-color.
+     *
+     * @return void
+     */
     public function combinations()
     {
         return $this->adminModule('combinaciones');
     }
 
+    /**
+     * Muestra la gestión de usuarios.
+     *
+     * @return void
+     */
     public function users()
     {
         return $this->adminModule('usuarios');
     }
 
+    /**
+     * Muestra la configuración general del sitio.
+     *
+     * @return void
+     */
     public function settings()
     {
         return $this->adminModule('configuracion');
     }
 
+    /**
+     * Renderiza un módulo del panel admin.
+     *
+     * Método centralizado que carga la vista principal del admin
+     * con todos los datos necesarios para el módulo activo (stats,
+     * analytics, productos, categorías, telas, colores, usuarios, etc).
+     *
+     * @param string $activeModule Identificador del módulo activo
+     *                             (dashboard, productos, telas, colores, combinaciones, usuarios, configuracion).
+     *
+     * @return void
+     */
     private function adminModule(string $activeModule)
     {
         $this->requireAdmin();
@@ -194,6 +312,15 @@ class AdminController extends Controller
         ]);
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // CRUD DE PRODUCTOS
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Muestra el formulario de creación de producto.
+     *
+     * @return void
+     */
     public function createProduct()
     {
         $this->requireAdmin();
@@ -210,6 +337,15 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * Procesa la creación de un nuevo producto.
+     *
+     * Valida datos del formulario, verifica imagen subida,
+     * inserta en tabla `productos` y crea/actualiza la imagen principal
+     * en `producto_imagenes`. Usa transacción para atomicidad.
+     *
+     * @return void Redirige a /admin/productos (éxito) o al form (error).
+     */
     public function storeProduct()
     {
         $this->requireAdmin();
@@ -255,6 +391,13 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Muestra el formulario de edición de un producto existente.
+     *
+     * @param string|int $id ID del producto a editar.
+     *
+     * @return void
+     */
     public function editProduct($id)
     {
         $this->requireAdmin();
@@ -276,6 +419,13 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * Procesa la actualización de un producto existente.
+     *
+     * @param string|int $id ID del producto a actualizar.
+     *
+     * @return void Redirige a /admin/productos (éxito) o al form (error).
+     */
     public function updateProduct($id)
     {
         $this->requireAdmin();
@@ -323,6 +473,13 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Cambia el estado activo/inactivo de un producto.
+     *
+     * @param string|int $id ID del producto.
+     *
+     * @return void Redirige a /admin/productos con mensaje.
+     */
     public function toggleProductStatus($id)
     {
         $this->requireAdmin();
@@ -337,6 +494,15 @@ class AdminController extends Controller
         return $this->flashRedirect($this->productsRedirectUrl(), $message);
     }
 
+    /**
+     * Elimina un producto de la base de datos.
+     *
+     * Usa DELETE real (las FKs con CASCADE borran imágenes, medidas, etc).
+     *
+     * @param string|int $id ID del producto a eliminar.
+     *
+     * @return void Redirige a /admin/productos con mensaje.
+     */
     public function deleteProduct($id)
     {
         $this->requireAdmin();
@@ -361,6 +527,11 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Construye la URL de redirección para productos preservando búsqueda.
+     *
+     * @return string URL de redirección (/admin/productos o con ?q=...).
+     */
     private function productsRedirectUrl(): string
     {
         $search = trim($_POST['q'] ?? $_GET['q'] ?? '');
@@ -371,6 +542,16 @@ class AdminController extends Controller
 
         return '/admin/productos?q=' . rawurlencode($search);
     }
+
+    // ─────────────────────────────────────────────────────────────
+    // CRUD DE TELAS
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Crea una nueva tela en la base de datos.
+     *
+     * @return void Redirige a /admin/telas con mensaje.
+     */
     public function storeFabric()
     {
         $this->requireAdmin();
@@ -403,6 +584,13 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Actualiza una tela existente.
+     *
+     * @param string|int $id ID de la tela.
+     *
+     * @return void Redirige a /admin/telas con mensaje.
+     */
     public function updateFabric($id)
     {
         $this->requireAdmin();
@@ -438,6 +626,13 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Desactiva una tela (soft-delete).
+     *
+     * @param string|int $id ID de la tela.
+     *
+     * @return void Redirige a /admin/telas con mensaje.
+     */
     public function deleteFabric($id)
     {
         $this->requireAdmin();
@@ -452,6 +647,15 @@ class AdminController extends Controller
         return $this->flashRedirect('/admin/telas', 'Tela desactivada correctamente.');
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // CRUD DE COLORES
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Crea un nuevo color en la base de datos.
+     *
+     * @return void Redirige a /admin/colores con mensaje.
+     */
     public function storeColor()
     {
         $this->requireAdmin();
@@ -484,6 +688,13 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Actualiza un color existente.
+     *
+     * @param string|int $id ID del color.
+     *
+     * @return void Redirige a /admin/colores con mensaje.
+     */
     public function updateColor($id)
     {
         $this->requireAdmin();
@@ -519,6 +730,13 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Desactiva un color (soft-delete).
+     *
+     * @param string|int $id ID del color.
+     *
+     * @return void Redirige a /admin/colores con mensaje.
+     */
     public function deleteColor($id)
     {
         $this->requireAdmin();
@@ -533,6 +751,15 @@ class AdminController extends Controller
         return $this->flashRedirect('/admin/colores', 'Color desactivado correctamente.');
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // CRUD DE COMBINACIONES TELA-COLOR
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Crea una nueva combinación tela-color.
+     *
+     * @return void Redirige a /admin/combinaciones con mensaje.
+     */
     public function storeFabricColor()
     {
         $this->requireAdmin();
@@ -570,6 +797,13 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Desactiva una combinación tela-color (marca disponible = 0).
+     *
+     * @param string|int $id ID de la combinación (tela_colores).
+     *
+     * @return void Redirige a /admin/combinaciones con mensaje.
+     */
     public function deleteFabricColor($id)
     {
         $this->requireAdmin();
@@ -584,6 +818,15 @@ class AdminController extends Controller
         return $this->flashRedirect('/admin/combinaciones', 'Combinación desactivada correctamente.');
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // CRUD DE USUARIOS
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Crea un nuevo usuario administrador/vendedor.
+     *
+     * @return void Redirige a /admin/usuarios con mensaje.
+     */
     public function storeUser()
     {
         $this->requireAdmin();
@@ -611,6 +854,16 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Actualiza un usuario existente.
+     *
+     * Si se proporciona nueva clave, la hashea y actualiza.
+     * Si no, mantiene la clave actual sin modificar.
+     *
+     * @param string|int $id ID del usuario.
+     *
+     * @return void Redirige a /admin/usuarios con mensaje.
+     */
     public function updateUser($id)
     {
         $this->requireAdmin();
@@ -665,6 +918,15 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Desactiva un usuario (soft-delete).
+     *
+     * No permite desactivar al usuario actualmente logueado.
+     *
+     * @param string|int $id ID del usuario.
+     *
+     * @return void Redirige a /admin/usuarios con mensaje.
+     */
     public function deleteUser($id)
     {
         $this->requireAdmin();
@@ -681,6 +943,18 @@ class AdminController extends Controller
         return $this->flashRedirect('/admin/usuarios', 'Usuario desactivado correctamente.');
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // CONFIGURACIÓN DEL SITIO
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Guarda la configuración general del sitio.
+     *
+     * Actualiza o inserta en la tabla `contenidos_sitio` usando
+     * ON DUPLICATE KEY UPDATE. Valida que nombre y WhatsApp no estén vacíos.
+     *
+     * @return void Redirige a /admin/configuracion con mensaje.
+     */
     public function updateSettings()
     {
         $this->requireAdmin();
@@ -732,6 +1006,18 @@ class AdminController extends Controller
         }
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // CAMBIO DE CLAVE PROPIA
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Permite al usuario logueado cambiar su propia contraseña.
+     *
+     * Valida clave actual, mínimo 8 caracteres para la nueva,
+     * y que la confirmación coincida.
+     *
+     * @return void Redirige a /admin/dashboard con mensaje.
+     */
     public function updateOwnPassword()
     {
         $this->requireAdmin();
@@ -777,6 +1063,15 @@ class AdminController extends Controller
         return $this->flashRedirect('/admin/dashboard', 'Clave actualizada correctamente.');
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // MÉTODOS PRIVADOS: CONSULTAS DE DATOS
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Obtiene estadísticas generales para el dashboard.
+     *
+     * @return array Contadores: products, featured, inactiveProducts, categories, fabrics, colors, users.
+     */
     private function getDashboardStats(): array
     {
         $pdo = Database::connect();
@@ -792,6 +1087,13 @@ class AdminController extends Controller
         ];
     }
 
+    /**
+     * Obtiene listado de productos con búsqueda opcional.
+     *
+     * @param string $search Término de búsqueda (nombre, descripción o categoría).
+     *
+     * @return array Lista de productos con imagen y categoría.
+     */
     private function getProducts(string $search = ''): array
     {
         $params = [];
@@ -828,7 +1130,13 @@ class AdminController extends Controller
 
         return $stmt->fetchAll();
     }
-private function getUsers(): array
+
+    /**
+     * Obtiene todos los usuarios con su rol.
+     *
+     * @return array Lista de usuarios ordenados por activo desc, nombre asc.
+     */
+    private function getUsers(): array
     {
         $stmt = Database::connect()->query("
             SELECT u.id_usuario, u.id_rol, u.nombre, u.email, u.usuario, u.activo, r.nombre AS rol
@@ -840,6 +1148,11 @@ private function getUsers(): array
         return $stmt->fetchAll();
     }
 
+    /**
+     * Obtiene los roles activos del sistema.
+     *
+     * @return array Lista de roles (id_rol, nombre).
+     */
     private function getRoles(): array
     {
         $stmt = Database::connect()->query("
@@ -852,11 +1165,23 @@ private function getUsers(): array
         return $stmt->fetchAll();
     }
 
+    /**
+     * Obtiene la configuración del sitio via SiteSettings.
+     *
+     * @return array Mapa completo de settings (clave => valor).
+     */
     private function getSettings(): array
     {
         return SiteSettings::all();
     }
 
+    /**
+     * Obtiene un producto específico por ID con su imagen principal.
+     *
+     * @param int $id ID del producto.
+     *
+     * @return array|null Datos del producto o null si no existe.
+     */
     private function getProduct(int $id): ?array
     {
         $stmt = Database::connect()->prepare("
@@ -880,6 +1205,11 @@ private function getUsers(): array
         return $product ?: null;
     }
 
+    /**
+     * Obtiene las categorías de producto activas.
+     *
+     * @return array Lista de categorías (id, nombre).
+     */
     private function getCategories(): array
     {
         $stmt = Database::connect()->query("
@@ -892,6 +1222,80 @@ private function getUsers(): array
         return $stmt->fetchAll();
     }
 
+    /**
+     * Obtiene las telas registradas.
+     *
+     * @return array Lista de telas o array vacío si la tabla no existe.
+     */
+    private function getFabrics(): array
+    {
+        if (!$this->tableExists('telas')) {
+            return [];
+        }
+
+        return Database::connect()->query("
+            SELECT id_tela, nombre, descripcion, orden, activo
+            FROM telas
+            ORDER BY activo DESC, orden ASC, nombre ASC
+        ")->fetchAll();
+    }
+
+    /**
+     * Obtiene los colores registrados.
+     *
+     * @return array Lista de colores o array vacío si la tabla no existe.
+     */
+    private function getColors(): array
+    {
+        if (!$this->tableExists('colores')) {
+            return [];
+        }
+
+        return Database::connect()->query("
+            SELECT id_color, nombre, codigo_hex, orden, activo
+            FROM colores
+            ORDER BY activo DESC, orden ASC, nombre ASC
+        ")->fetchAll();
+    }
+
+    /**
+     * Obtiene las combinaciones tela-color con datos de tela y color.
+     *
+     * @return array Lista de combinaciones o array vacío si faltan tablas.
+     */
+    private function getFabricColors(): array
+    {
+        if (!$this->catalogOptionsReady()) {
+            return [];
+        }
+
+        return Database::connect()->query("
+            SELECT
+                tc.id_tela_color,
+                tc.codigo_proveedor,
+                tc.disponible,
+                tc.orden,
+                t.id_tela,
+                t.nombre AS tela,
+                c.id_color,
+                c.nombre AS color,
+                c.codigo_hex
+            FROM tela_colores tc
+            INNER JOIN telas t ON t.id_tela = tc.id_tela
+            INNER JOIN colores c ON c.id_color = tc.id_color
+            ORDER BY tc.disponible DESC, t.orden ASC, t.nombre ASC, tc.orden ASC, c.nombre ASC
+        ")->fetchAll();
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // MÉTODOS PRIVADOS: VALIDACIÓN Y TRANSFORMACIÓN
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Extrae y sanitiza los datos de producto desde $_POST.
+     *
+     * @return array Datos listos para insertar/actualizar en la DB.
+     */
     private function productDataFromRequest(): array
     {
         return [
@@ -904,6 +1308,13 @@ private function getUsers(): array
         ];
     }
 
+    /**
+     * Valida los datos de un producto.
+     *
+     * @param array $data Datos del producto a validar.
+     *
+     * @return string|null Mensaje de error o null si es válido.
+     */
     private function validateProductData(array $data): ?string
     {
         if ($data['category_id'] <= 0) {
@@ -921,6 +1332,11 @@ private function getUsers(): array
         return null;
     }
 
+    /**
+     * Extrae y sanitiza los datos de usuario desde $_POST.
+     *
+     * @return array Datos listos para insertar/actualizar en la DB.
+     */
     private function userDataFromRequest(): array
     {
         return [
@@ -932,6 +1348,15 @@ private function getUsers(): array
         ];
     }
 
+    /**
+     * Valida los datos de un usuario.
+     *
+     * @param array  $data            Datos del usuario.
+     * @param string $password        Clave proporcionada.
+     * @param bool   $requirePassword Si true, la clave es obligatoria (creación).
+     *
+     * @return string|null Mensaje de error o null si es válido.
+     */
     private function validateUserData(array $data, string $password, bool $requirePassword): ?string
     {
         if ($data['role_id'] <= 0) {
@@ -961,56 +1386,15 @@ private function getUsers(): array
         return null;
     }
 
-    private function getFabrics(): array
-    {
-        if (!$this->tableExists('telas')) {
-            return [];
-        }
+    // ─────────────────────────────────────────────────────────────
+    // MÉTODOS PRIVADOS: UTILIDADES
+    // ─────────────────────────────────────────────────────────────
 
-        return Database::connect()->query("
-            SELECT id_tela, nombre, descripcion, orden, activo
-            FROM telas
-            ORDER BY activo DESC, orden ASC, nombre ASC
-        ")->fetchAll();
-    }
-
-    private function getColors(): array
-    {
-        if (!$this->tableExists('colores')) {
-            return [];
-        }
-
-        return Database::connect()->query("
-            SELECT id_color, nombre, codigo_hex, orden, activo
-            FROM colores
-            ORDER BY activo DESC, orden ASC, nombre ASC
-        ")->fetchAll();
-    }
-
-    private function getFabricColors(): array
-    {
-        if (!$this->catalogOptionsReady()) {
-            return [];
-        }
-
-        return Database::connect()->query("
-            SELECT
-                tc.id_tela_color,
-                tc.codigo_proveedor,
-                tc.disponible,
-                tc.orden,
-                t.id_tela,
-                t.nombre AS tela,
-                c.id_color,
-                c.nombre AS color,
-                c.codigo_hex
-            FROM tela_colores tc
-            INNER JOIN telas t ON t.id_tela = tc.id_tela
-            INNER JOIN colores c ON c.id_color = tc.id_color
-            ORDER BY tc.disponible DESC, t.orden ASC, t.nombre ASC, tc.orden ASC, c.nombre ASC
-        ")->fetchAll();
-    }
-
+    /**
+     * Verifica si las tablas de catálogo (telas, colores, tela_colores) existen.
+     *
+     * @return bool True si las tres tablas existen en la DB.
+     */
     private function catalogOptionsReady(): bool
     {
         return $this->tableExists('telas')
@@ -1018,6 +1402,15 @@ private function getUsers(): array
             && $this->tableExists('tela_colores');
     }
 
+    /**
+     * Verifica si una tabla existe en la base de datos actual.
+     *
+     * Cachea resultados en memoria estática durante el request.
+     *
+     * @param string $table Nombre de la tabla.
+     *
+     * @return bool True si la tabla existe.
+     */
     private function tableExists(string $table): bool
     {
         static $cache = [];
@@ -1043,6 +1436,16 @@ private function getUsers(): array
         return $cache[$table];
     }
 
+    /**
+     * Normaliza un valor de color hexadecimal.
+     *
+     * Asegura formato #XXXXXX (6 dígitos hex uppercase).
+     * Retorna null si el valor no es un hex válido.
+     *
+     * @param string|null $value Valor hex ingresado por el usuario.
+     *
+     * @return string|null Hex normalizado (#XXXXXX) o null.
+     */
     private function normalizeHex(?string $value): ?string
     {
         $value = trim((string) $value);
@@ -1058,6 +1461,15 @@ private function getUsers(): array
         return preg_match('/^#[0-9A-Fa-f]{6}$/', $value) ? strtoupper($value) : null;
     }
 
+    /**
+     * Calcula el próximo valor de orden para una tabla.
+     *
+     * Toma el máximo actual y suma 10 (intervalos de 10 para reordenar fácil).
+     *
+     * @param string $table Nombre de la tabla (solo 'telas' o 'colores' permitidos).
+     *
+     * @return int Próximo valor de orden.
+     */
     private function nextOrder(string $table): int
     {
         $allowedTables = ['telas', 'colores'];
@@ -1071,6 +1483,13 @@ private function getUsers(): array
         return (int) $stmt->fetchColumn();
     }
 
+    /**
+     * Determina el tipo de dato para un setting (usado en contenidos_sitio).
+     *
+     * @param string $key Clave del setting.
+     *
+     * @return string Tipo: email, telefono, url, textarea o texto.
+     */
     private function settingType(string $key): string
     {
         return match ($key) {
@@ -1082,6 +1501,13 @@ private function getUsers(): array
         };
     }
 
+    /**
+     * Devuelve la descripción legible de un setting para la DB.
+     *
+     * @param string $key Clave del setting.
+     *
+     * @return string Descripción en español.
+     */
     private function settingDescription(string $key): string
     {
         return match ($key) {
@@ -1101,7 +1527,18 @@ private function getUsers(): array
         };
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // MÉTODOS PRIVADOS: GESTIÓN DE IMÁGENES
+    // ─────────────────────────────────────────────────────────────
 
+    /**
+     * Valida el archivo de imagen subido vía $_FILES.
+     *
+     * Verifica: error de upload, tamaño max 5MB, formato válido
+     * (JPG, PNG, WEBP) mediante getimagesize().
+     *
+     * @return string|null Mensaje de error o null si es válido/no hay archivo.
+     */
     private function productImageUploadError(): ?string
     {
         if (empty($_FILES['product_image']) || ($_FILES['product_image']['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
@@ -1134,6 +1571,18 @@ private function getUsers(): array
         return null;
     }
 
+    /**
+     * Guarda la imagen subida en disco y retorna su path relativo.
+     *
+     * Destino: public/uploads/catalogo/producto-{id}-{timestamp}-{random}.{ext}
+     * Crea el directorio si no existe.
+     *
+     * @param int $productId ID del producto (para nombrar el archivo).
+     *
+     * @return string|null Path relativo guardado (/uploads/catalogo/...) o null si no hay upload.
+     *
+     * @throws \RuntimeException Si no se puede crear directorio o mover archivo.
+     */
     private function saveProductImageUpload(int $productId): ?string
     {
         if (empty($_FILES['product_image']) || ($_FILES['product_image']['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
@@ -1173,6 +1622,20 @@ private function getUsers(): array
 
         return '/uploads/catalogo/' . $filename;
     }
+
+    /**
+     * Inserta o actualiza la imagen principal de un producto.
+     *
+     * Si ya existe un registro en producto_imagenes para ese producto,
+     * lo actualiza. Si no, crea uno nuevo marcado como principal.
+     *
+     * @param PDO    $pdo       Instancia PDO (dentro de transacción).
+     * @param int    $productId ID del producto.
+     * @param string|null $path Ruta de la imagen (si vacía, no hace nada).
+     * @param string $name      Nombre del producto (para texto alt).
+     *
+     * @return void
+     */
     private function upsertMainImage(PDO $pdo, int $productId, ?string $path, string $name): void
     {
         $path = trim((string) $path);
@@ -1223,11 +1686,27 @@ private function getUsers(): array
         ]);
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // MÉTODOS PRIVADOS: AUTENTICACIÓN Y NAVEGACIÓN
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Verifica si hay un usuario admin logueado en sesión.
+     *
+     * @return bool True si existe admin_user.id en la sesión.
+     */
     private function isLoggedIn(): bool
     {
         return isset($_SESSION['admin_user']['id']);
     }
 
+    /**
+     * Verifica autenticación y redirige a login si no hay sesión.
+     *
+     * Se usa al inicio de cada método protegido del admin.
+     *
+     * @return void Termina ejecución con redirect si no autenticado.
+     */
     private function requireAdmin(): void
     {
         if (!$this->isLoggedIn()) {
@@ -1236,18 +1715,41 @@ private function getUsers(): array
         }
     }
 
+    /**
+     * Redirige al login con un mensaje de error en sesión.
+     *
+     * @param string $message Mensaje de error a mostrar en el form.
+     *
+     * @return void
+     */
     private function backToLogin(string $message)
     {
         $_SESSION['admin_error'] = $message;
         return $this->redirect('/admin/login');
     }
 
+    /**
+     * Guarda un flash message en sesión y redirige.
+     *
+     * @param string $path    Ruta destino de la redirección.
+     * @param string $message Mensaje a mostrar tras la redirección.
+     * @param bool   $isError Si true, se guarda como error; si false, como éxito.
+     *
+     * @return void
+     */
     private function flashRedirect(string $path, string $message, bool $isError = false)
     {
         $_SESSION[$isError ? 'admin_error' : 'admin_message'] = $message;
         return $this->redirect($path);
     }
 
+    /**
+     * Realiza una redirección HTTP considerando el base path.
+     *
+     * @param string $path Ruta relativa destino (ej: '/admin/productos').
+     *
+     * @return void Termina ejecución con header Location.
+     */
     private function redirect(string $path)
     {
         $basePath = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '')), '/');
