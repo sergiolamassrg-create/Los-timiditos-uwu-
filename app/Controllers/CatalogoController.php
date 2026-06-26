@@ -6,8 +6,28 @@ use App\Core\Controller;
 use App\Core\Database;
 use PDOException;
 
+/**
+ * CatalogoController
+ *
+ * Controlador de la página pública "Catálogo".
+ * Consulta la base de datos para obtener los productos activos
+ * con sus categorías, imágenes, medidas, características y
+ * opciones de telas/colores. Entrega los datos al frontend
+ * para renderizado dinámico con filtros.
+ *
+ * Ruta asociada: GET /catalogo
+ */
 class CatalogoController extends Controller
 {
+    /**
+     * Renderiza la vista del catálogo con los productos desde la DB.
+     *
+     * Pasa al template un array `catalogItems` con la estructura
+     * que espera el módulo JS `catalogo-module.js` para renderizar
+     * las cards y aplicar filtros del lado del cliente.
+     *
+     * @return void Emite el HTML de la página al navegador.
+     */
     public function index()
     {
         return $this->view('pages/catalogo', [
@@ -16,6 +36,16 @@ class CatalogoController extends Controller
         ]);
     }
 
+    /**
+     * Obtiene todos los productos activos formateados para el catálogo.
+     *
+     * Consulta la tabla `productos` con JOIN a `categorias_producto`
+     * y subquery para la imagen principal. Luego obtiene las opciones
+     * globales (telas, colores, medidas, características) y mapea
+     * cada producto a la estructura esperada por el frontend.
+     *
+     * @return array Lista de productos formateados. Array vacío si hay error DB.
+     */
     private function getCatalogItems(): array
     {
         try {
@@ -54,6 +84,24 @@ class CatalogoController extends Controller
         }
     }
 
+    /**
+     * Transforma un row de la DB en la estructura esperada por el frontend.
+     *
+     * Estructura resultante por item:
+     *  - id: string ('producto-{id}')
+     *  - name, category, subcategory, image, description: strings
+     *  - seats: int (capacidad de asientos)
+     *  - featured: bool
+     *  - features: array de strings (características + 'Destacado' si aplica)
+     *  - materials: array de strings (nombres de telas disponibles)
+     *  - colors: array de strings (nombres de colores disponibles)
+     *  - sizes: array de strings (descripciones de medidas)
+     *
+     * @param array $row     Fila de la consulta SQL con datos del producto.
+     * @param array $options Opciones globales (materials, colors, sizesByProduct, featuresByProduct).
+     *
+     * @return array Producto formateado para consumo del frontend.
+     */
     private function mapCatalogItem(array $row, array $options): array
     {
         $features = $options['featuresByProduct'][(int) $row['id_producto']] ?? ['A medida'];
@@ -79,6 +127,22 @@ class CatalogoController extends Controller
         ];
     }
 
+    /**
+     * Obtiene las opciones globales del catálogo desde la DB.
+     *
+     * Consulta:
+     *  - Telas activas y disponibles → lista de materiales
+     *  - Colores activos y disponibles → lista de colores
+     *  - Medidas por producto → mapa id_producto => [descripciones]
+     *  - Características por producto → mapa id_producto => [nombres]
+     *
+     * Cada consulta verifica que la tabla exista antes de ejecutarse
+     * (soporte para bases de datos parciales durante desarrollo).
+     *
+     * @param \PDO $pdo Instancia de conexión PDO activa.
+     *
+     * @return array Estructura con claves: materials, colors, sizesByProduct, featuresByProduct.
+     */
     private function getGlobalCatalogOptions($pdo): array
     {
         $options = [
@@ -144,6 +208,17 @@ class CatalogoController extends Controller
         return $options;
     }
 
+    /**
+     * Verifica si una tabla existe en la base de datos actual.
+     *
+     * Cachea el resultado en memoria estática para evitar consultas
+     * repetidas durante el mismo request.
+     *
+     * @param \PDO   $pdo   Instancia de conexión.
+     * @param string $table Nombre de la tabla a verificar.
+     *
+     * @return bool True si la tabla existe.
+     */
     private function tableExists($pdo, string $table): bool
     {
         static $cache = [];
@@ -164,6 +239,19 @@ class CatalogoController extends Controller
         return $cache[$table];
     }
 
+    /**
+     * Normaliza la ruta de una imagen de producto.
+     *
+     * Reglas:
+     *  - Si está vacía: retorna imagen por defecto del catálogo.
+     *  - Reemplaza backslashes por forward slashes.
+     *  - Remueve el prefijo 'public/' si está presente.
+     *  - Asegura que comience con '/'.
+     *
+     * @param string|null $path Ruta almacenada en la DB.
+     *
+     * @return string Ruta normalizada relativa a la carpeta public.
+     */
     private function normalizeImagePath(?string $path): string
     {
         $path = trim((string) $path);

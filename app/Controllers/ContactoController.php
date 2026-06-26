@@ -3,19 +3,25 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Core\Database;
+
+/**
+ * ContactoController
+ *
+ * Controlador de la página pública "Contacto".
+ * Muestra información de contacto (teléfonos, dirección, horarios),
+ * enlace a WhatsApp e Instagram, y mapa de ubicación.
+ *
+ * Ruta asociada: GET /contacto
+ */
 class ContactoController extends Controller
 {
     /**
-     * Mostrar vista (osea la pagina)
+     * Renderiza la vista de la página de contacto.
+     *
+     * @return void Emite el HTML de la página al navegador.
      */
     public function index()
     {
-     /**
-     * El primer string es la ruta del .php de la vista (osea donde metes el html) y en el segundo datos que puedes usar dentro de esta
-     * En esta funcion poder hacer llamadas a bases de datos antes de que carge la pagina pero para que se muestre siempre se tiene que usar return $this->view
-     */
         return $this->view('pages/contacto', []);
     }
-
 }
