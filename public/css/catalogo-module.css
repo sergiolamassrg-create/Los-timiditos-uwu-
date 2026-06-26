@@ -1,18 +1,4 @@
-﻿.catalog-page {
-  min-height: 100vh;
-}
-
-.catalog-page .btn-secondary {
-  color: var(--text);
-  border-color: var(--line);
-  background: #fff;
-}
-
-.catalog-hero {
-  padding: 5.5rem 0 2.5rem;
-}
-
-.catalog-hero-inner {
+﻿.catalog-hero-inner {
   display: grid;
   gap: 1.1rem;
   max-width: 760px;
@@ -33,7 +19,7 @@
 
 .filters {
   position: sticky;
-  top: 5.8rem;
+  top: 4rem; /* Cambialo de 5.8rem a 4rem para que suba y pegue al nuevo header compacto */
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 1rem;
@@ -602,24 +588,7 @@
 .catalog-card:hover img {
   opacity: 0.92;
 }
-/* Header compacto en catalogo */
-.catalog-page .nav-wrap {
-  min-height: 52px;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
-}
 
-.catalog-page .brand img {
-  height: 28px;
-}
-
-.catalog-page .brand span {
-  font-size: 1.1rem;
-}
-
-.catalog-page .site-nav a {
-  font-size: 0.88rem;
-}
 
 /* Hero centrado y llamativo */
 .catalog-hero {

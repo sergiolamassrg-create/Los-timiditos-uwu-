@@ -138,6 +138,22 @@ h3 {
   background: rgba(246, 244, 239, 0.9);
   border-bottom: 1px solid rgba(215, 211, 200, 0.85);
 }
+.page-shell .nav-wrap,
+  .page-services .nav-wrap {
+    min-height: 52px;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .page-shell .brand img,
+  .page-services .brand img {
+    height: 28px;
+  }
+
+  .page-shell .brand span,
+  .page-services .brand span {
+    font-size: 1.1rem;
+  }
 
 .site-header.scrolled {
   box-shadow: 0 10px 24px rgba(22, 24, 21, 0.09);
@@ -165,29 +181,59 @@ h3 {
 .top-bar-inner a {
   font-weight: 700;
 }
-
+/* Header unificado global - Control total de tamaño */
+header, 
+header .nav-wrap, 
+.catalog-page .nav-wrap, 
+.page-contact .nav-wrap,
 .nav-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.85rem 0;
+  min-height: 52px !important;
+  height: 52px !important;
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
+/* ACÁ ESTÁ EL ARREGLO PARA EL LOGO Y EL TEXTO */
+header .brand,
 .brand {
-  display: inline-flex;
-  gap: 0.7rem;
-  align-items: center;
-  font-family: "Outfit", sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important; /* Espacio entre el sillón y la palabra Tapisur */
 }
 
+header .brand img, 
 .brand img {
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 0.6rem;
-  object-fit: cover;
+  height: 28px !important;
+  width: auto !important; /* Evita que el logo se deforme */
+}
+
+header .brand span, 
+.brand span {
+  font-size: 1.1rem !important;
+  margin: 0 !important; /* Quita márgenes viejos que tiren el texto abajo */
+}
+
+header .site-nav a, 
+.site-nav a {
+  font-size: 0.88rem !important;
+}
+
+/* Empujar el menú hacia la derecha */
+header .container,
+.nav-wrap .container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+header .site-nav, 
+.site-nav {
+  margin-left: auto !important; /* Fuerza al menú a irse a la derecha */
+  display: flex !important;
+  gap: 1.5rem !important; /* Espaciado entre los links (Inicio, Catálogo, etc.) */
 }
 
 .site-nav {
@@ -347,29 +393,64 @@ h3 {
 }
 
 .motion-strip {
-  position: relative;
-  overflow: hidden;
-  border-top: 1px solid rgba(215, 211, 200, 0.9);
-  border-bottom: 1px solid rgba(215, 211, 200, 0.9);
-  background: linear-gradient(90deg, #f0eadf, #faf8f2);
-}
+    position: relative;
+    overflow: hidden;
+    border-top: 2px solid rgba(122, 101, 82, 0.2);
+    border-bottom: 2px solid rgba(122, 101, 82, 0.2);
+    background: linear-gradient(90deg, #3b2a1a, #5a3e28, #3b2a1a);
+  }
+
+  .motion-strip::before,
+  .motion-strip::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .motion-strip::before {
+    left: 0;
+    background: linear-gradient(to right, #3b2a1a, transparent);
+  }
+
+  .motion-strip::after {
+    right: 0;
+    background: linear-gradient(to left, #3b2a1a, transparent);
+  }
 
 .motion-strip-track {
   display: flex;
-  gap: 1.8rem;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   width: max-content;
-  padding: 0.9rem 0;
+  gap: 1.8rem;
+  padding: 0.75rem 0;
   white-space: nowrap;
   animation: marquee 28s linear infinite;
 }
 
 .motion-strip-track span {
-  position: relative;
-  padding-left: 1rem;
-  color: var(--accent-dark);
-  font-weight: 700;
-  letter-spacing: 0.03em;
-}
+    position: relative;
+    padding-left: 1.2rem;
+    color: #f5ddb8;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+  }
+
+  .motion-strip-track span::before {
+    content: "◆";
+    position: absolute;
+    left: 0;
+    color: rgba(196, 154, 42, 0.7);
+    font-size: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
 .motion-strip-track span::before {
   content: "";
@@ -697,11 +778,11 @@ h3 {
 .info-grid,
 .policy-grid,
 .service-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+  
 .module-card,
 .info-card,
 .policy-card,
@@ -1626,21 +1707,10 @@ h3 {
 }
 
 /* Nuevo diseno Front - identidad visual Tapisur */
-:root {
-  --bg: #f8f3eb;
-  --surface: #fffaf4;
-  --surface-2: #f1e7dc;
-  --text: #2b1f18;
-  --muted: #5f584e;
-  --line: #ded0c2;
-  --accent: #4d6338;
-  --accent-dark: #26361e;
-  --brand: #9d704c;
-  --brand-soft: #c49a78;
-  --cream: #fbf7f0;
-  --shadow: 0 18px 42px rgba(75, 51, 31, 0.11);
-  --radius: 8px;
-}
+.motion-strip {
+    background: linear-gradient(90deg, #3b2a1a, #5a3e28, #3b2a1a);
+    border-color: rgba(122, 101, 82, 0.2);
+  }
 
 body {
   font-family: "DM Sans", "Segoe UI", sans-serif;
@@ -1718,9 +1788,23 @@ h3 {
   font-size: 0.85rem;
 }
 
+/* Header unificado para todas las vistas */
 .nav-wrap {
-  min-height: 4.4rem;
-  padding: 0.55rem 0;
+  min-height: 52px;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+.brand img {
+  height: 28px;
+}
+
+.brand span {
+  font-size: 1.1rem;
+}
+
+.site-nav a {
+  font-size: 0.88rem;
 }
 
 .brand {
@@ -4569,4 +4653,105 @@ h3 {
   .about-workshop-points {
     grid-template-columns: 1fr;
   }
+}
+
+.service-card {
+    border-radius: 16px;
+    padding: 1.6rem 1.4rem;
+    border: 1px solid rgba(122, 101, 82, 0.12);
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+    color: #2c1f12;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card ul {
+    padding-left: 1rem;
+    color: #6b4f35;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px rgba(31, 34, 28, 0.09);
+    border-color: rgba(122, 101, 82, 0.28);
+  }
+
+  /* --- ANIMACIÓN CARRUSEL INFINITO --- */
+
+/* Asegura que el contenedor oculte lo que se desborda */
+.motion-strip {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+}
+
+/* El track que contiene los textos y se va a mover */
+.motion-strip-track {
+  display: flex;
+  white-space: nowrap;
+  gap: 2rem; /* Espaciado entre palabras */
+  padding: 0.5rem 0;
+  animation: carruselInfinito 20s linear infinite; /* Activa el movimiento continuo */
+}
+
+/* Forzar que las palabras mantengan el formato en fila */
+.motion-strip-track span {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Los @keyframes que crean el efecto de bucle sin saltos */
+@keyframes carruselInfinito {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Se desplaza exactamente la mitad (el bloque repetido) */
+  }
+}
+
+/* --- DISEÑO ARMONIOSO PARA EL CARRUSEL --- */
+
+/* Color de fondo sutil para la tira */
+.motion-strip {
+  background: #fcfcfb !important; /* Un crema clarito muy limpio */
+  border-top: 1px solid rgba(122, 101, 82, 0.15) !important; /* Línea superior muy suave */
+  border-bottom: 1px solid rgba(122, 101, 82, 0.15) !important; /* Línea inferior muy suave */
+  position: relative;
+}
+
+/* Estilo de los textos dentro de la tira */
+.motion-strip-track span {
+  color: #6b4f35 !important; /* El mismo tono marrón suave que el resto de la web */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+
+/* El truco de los degradados transparentes en los extremos para que no tenga cortes bruscos */
+.motion-strip::before,
+.motion-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Degradado izquierdo (se funde desde el fondo hacia transparente) */
+.motion-strip::before {
+  left: 0;
+  background: linear-gradient(90deg, #fbf7f0 0%, rgba(251, 247, 240, 0) 100%) !important;
+}
+
+/* Degradado derecho (se funde desde transparente hacia el fondo) */
+.motion-strip::after {
+  right: 0;
+  background: linear-gradient(-90deg, #fbf7f0 0%, rgba(251, 247, 240, 0) 100%) !important;
 }
