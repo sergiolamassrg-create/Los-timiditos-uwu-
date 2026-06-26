@@ -8,6 +8,7 @@ use App\Core\Router;
 $router->get('/','HomeController@index');
 
 $router->get('/catalogo','CatalogoController@index');
+$router->get('/catalogo/{id}','CatalogoController@show');
 $router->get('/alianzas',"AlianzasController@index");
 $router->get('/contacto','ContactoController@index');
 $router->get('/entregas','EntregasController@index');

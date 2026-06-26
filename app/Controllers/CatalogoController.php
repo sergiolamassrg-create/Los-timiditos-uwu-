@@ -16,6 +16,30 @@ class CatalogoController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $productId = (int) $id;
+        $item = null;
+
+        foreach ($this->getCatalogItems() as $catalogItem) {
+            if ((int) ($catalogItem['productId'] ?? 0) === $productId) {
+                $item = $catalogItem;
+                break;
+            }
+        }
+
+        if (!$item) {
+            http_response_code(404);
+            return $this->view('pages/catalogo-detalle', [
+                'item' => null,
+            ]);
+        }
+
+        return $this->view('pages/catalogo-detalle', [
+            'item' => $item,
+        ]);
+    }
+
     private function getCatalogItems(): array
     {
         try {
@@ -65,6 +89,7 @@ class CatalogoController extends Controller
 
         return [
             'id' => 'producto-' . (int) $row['id_producto'],
+            'productId' => (int) $row['id_producto'],
             'name' => $row['nombre'],
             'category' => $row['categoria'],
             'subcategory' => $row['categoria_descripcion'] ?: 'Catalogo TAPISUR',

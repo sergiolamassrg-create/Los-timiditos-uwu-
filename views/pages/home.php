@@ -66,25 +66,25 @@ require __DIR__ . '/../partials/site-header.php';
         <h2>Así trabajamos</h2>
         <div class="home-process-grid">
           <article>
-            <img class="home-process-icon" src="/img/home-icons/process-idea.png" alt="" aria-hidden="true" />
+            <i class="bi bi-chat-dots home-process-icon" aria-hidden="true"></i>
             <span>1</span>
             <h3>Nos contás tu idea</h3>
             <p>Escuchamos lo que necesitás y te asesoramos.</p>
           </article>
           <article>
-            <img class="home-process-icon" src="/img/home-icons/process-define.png" alt="" aria-hidden="true" />
+            <i class="bi bi-rulers home-process-icon" aria-hidden="true"></i>
             <span>2</span>
             <h3>Definimos todo</h3>
             <p>Tomamos medidas, elegimos telas y detalles.</p>
           </article>
           <article>
-            <img class="home-process-icon" src="/img/home-icons/process-build.png" alt="" aria-hidden="true" />
+            <i class="bi bi-tools home-process-icon" aria-hidden="true"></i>
             <span>3</span>
             <h3>Fabricamos</h3>
             <p>Con dedicación y materiales de primera calidad.</p>
           </article>
           <article>
-            <img class="home-process-icon" src="/img/home-icons/process-deliver.png" alt="" aria-hidden="true" />
+            <i class="bi bi-truck home-process-icon" aria-hidden="true"></i>
             <span>4</span>
             <h3>Entregamos</h3>
             <p>Coordinamos la entrega hasta tu hogar.</p>
@@ -109,13 +109,13 @@ require __DIR__ . '/../partials/site-header.php';
 
     <section class="home-contact-strip">
       <div class="container home-contact-panel">
-        <img class="home-contact-icon" src="/img/home-icons/contact-sofa.svg" alt="" aria-hidden="true" />
+        <i class="bi bi-chat-heart home-contact-icon" aria-hidden="true"></i>
         <div>
           <h2>Contactanos</h2>
           <p>Contanos tu idea y te ayudamos a encontrar la mejor solución para tu hogar o negocio.</p>
         </div>
         <a class="btn btn-primary btn-whatsapp wa-link" data-wa-message="Hola TAPISUR, quiero hacer una consulta." target="_blank" rel="noopener noreferrer" href="https://wa.me/5491151103419?text=Hola%20TAPISUR%2C%20quiero%20hacer%20una%20consulta.">
-          <span class="btn-whatsapp-icon" aria-hidden="true"></span>
+          <i class="bi bi-whatsapp btn-whatsapp-icon" aria-hidden="true"></i>
           <span>WhatsApp</span>
         </a>
       </div>
