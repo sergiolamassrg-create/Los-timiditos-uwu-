@@ -15,10 +15,10 @@ require __DIR__ . '/../partials/site-header.php';
 
     <section class="catalog-hero">
       <div class="container catalog-hero-inner">
-        <p class="kicker">Modulo Avanzado</p>
-        <h1 data-content="catalog_title">Catalogo TAPISUR</h1>
-        <p><span data-content="catalog_subtitle">Filtra por categoria, material, capacidad y terminaciones. Configura opciones y envia tu consulta con el boton Me interesa este modelo.</span></p>
-      </div>
+        <p class="kicker">Tapicería a medida · Entrega en todo el país</p>
+<h1 data-content="catalog_title">Encontrá tu sillón ideal</h1>
+<p><span data-content="catalog_subtitle">Más de 24 modelos para elegir. Filtrá por categoría, material y medida, y consultanos por WhatsApp en un clic.</span></p>
+</div>
     </section>
 
     <section class="container catalog-layout" aria-label="Catalogo">
