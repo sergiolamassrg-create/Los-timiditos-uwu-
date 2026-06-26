@@ -92,6 +92,17 @@
     </div>
   </footer>
 
+  <a
+    href="https://wa.me/<?= htmlspecialchars($whatsapp, ENT_QUOTES, 'UTF-8') ?>?text=Hola%20TAPISUR%2C%20quiero%20hacer%20una%20consulta."
+    class="whatsapp-float wa-link"
+    data-wa-message="Hola TAPISUR, quiero hacer una consulta."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Consultar por WhatsApp a TAPISUR"
+  >
+    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+  </a>
+
   <button class="scroll-top-btn" type="button" aria-label="Subir al inicio">
     <i class="bi bi-arrow-up" aria-hidden="true"></i>
   </button>
@@ -109,7 +120,7 @@
     };
   </script>
   <script src="/js/site-content.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/main.js?v=<?= filemtime(__DIR__ . '/../../public/js/main.js') ?>"></script>
   <?php if (!empty($inlineScripts)): ?>
     <?php foreach ($inlineScripts as $script): ?>
       <script><?= $script ?></script>
@@ -130,10 +141,3 @@
   <?php endif; ?>
 </body>
 </html>
-<!-- Botón Flotante de WhatsApp para TAPISUR -->
-<a href="https://wa.me/5491151103419" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp a TAPISUR">
-  <i class="bi bi-whatsapp"></i>
-</a>
-
-
-

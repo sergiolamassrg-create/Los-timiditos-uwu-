@@ -33,7 +33,7 @@ $isActive = fn($module) => $activeModule === $module ? 'active' : '';
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="stylesheet" href="/css/admin.css?v=<?= filemtime(__DIR__ . '/../../../public/css/admin.css') ?>" />
 </head>
 <body class="admin-body">
   <div class="admin-app">
@@ -173,12 +173,12 @@ $isActive = fn($module) => $activeModule === $module ? 'active' : '';
               <tbody>
                 <?php foreach (($analytics['rows'] ?? []) as $visit): ?>
                   <tr>
-                    <td><code><?= $e($visit['ip_address']) ?></code></td>
-                    <td><?= (int) $visit['entradas'] ?></td>
-                    <td><?= $e($visit['primera_visita']) ?></td>
-                    <td><?= $e($visit['ultima_visita']) ?></td>
-                    <td><?= $e($visit['ultima_pagina']) ?></td>
-                    <td><?= $e(trim(($visit['ciudad'] ?? '') . ', ' . ($visit['region'] ?? '') . ', ' . ($visit['pais'] ?? ''), ', ')) ?></td>
+                    <td data-label="IP"><code><?= $e($visit['ip_address']) ?></code></td>
+                    <td data-label="Entradas"><?= (int) $visit['entradas'] ?></td>
+                    <td data-label="Primera visita"><?= $e($visit['primera_visita']) ?></td>
+                    <td data-label="Última visita"><?= $e($visit['ultima_visita']) ?></td>
+                    <td data-label="Última página"><?= $e($visit['ultima_pagina']) ?></td>
+                    <td data-label="Ubicación aprox."><?= $e(trim(($visit['ciudad'] ?? '') . ', ' . ($visit['region'] ?? '') . ', ' . ($visit['pais'] ?? ''), ', ')) ?></td>
                   </tr>
                 <?php endforeach; ?>
                 <?php if (empty($analytics['rows'])): ?>
@@ -230,7 +230,7 @@ $isActive = fn($module) => $activeModule === $module ? 'active' : '';
                   <?php $productId = (int) $product['id_producto']; ?>
                   <?php $isProductActive = (int) $product['activo'] === 1; ?>
                   <tr class="<?= $isProductActive ? '' : 'is-inactive' ?>">
-                    <td>
+                    <td data-label="Producto">
                       <div class="product-cell">
                         <?php if (!empty($product['imagen'])): ?>
                           <img src="<?= $e($product['imagen']) ?>" alt="<?= $e($product['nombre']) ?>" />
@@ -243,8 +243,8 @@ $isActive = fn($module) => $activeModule === $module ? 'active' : '';
                         </div>
                       </div>
                     </td>
-                    <td><?= $e($product['categoria']) ?></td>
-                    <td>
+                    <td data-label="Categoría"><?= $e($product['categoria']) ?></td>
+                    <td data-label="Estado">
                       <form class="product-status-form" method="post" action="/admin/productos/<?= $productId ?>/estado">
                         <?php if ($productSearch !== ''): ?><input type="hidden" name="q" value="<?= $e($productSearch) ?>"><?php endif; ?>
                         <label class="status-switch" title="<?= $isProductActive ? 'Desactivar producto' : 'Activar producto' ?>">
@@ -254,8 +254,8 @@ $isActive = fn($module) => $activeModule === $module ? 'active' : '';
                         </label>
                       </form>
                     </td>
-                    <td><i class="bi <?= ((int) $product['destacado'] === 1) ? 'bi-star-fill text-warning' : 'bi-star text-muted' ?>"></i></td>
-                    <td>
+                    <td data-label="Destacado"><i class="bi <?= ((int) $product['destacado'] === 1) ? 'bi-star-fill text-warning' : 'bi-star text-muted' ?>"></i></td>
+                    <td data-label="Acciones">
                       <div class="d-flex justify-content-end gap-2">
                         <a class="btn btn-light btn-icon" href="/admin/productos/<?= $productId ?>/editar" title="Editar" aria-label="Editar <?= $e($product['nombre']) ?>"><i class="bi bi-pencil"></i></a>
                         <form method="post" action="/admin/productos/<?= $productId ?>/eliminar" onsubmit="return confirm('Esta acción elimina el producto definitivamente. ¿Continuar?');">
@@ -299,10 +299,10 @@ $isActive = fn($module) => $activeModule === $module ? 'active' : '';
                 <?php foreach ($fabrics as $fabric): ?>
                   <?php $fabricFormId = 'fabric-form-' . (int) $fabric['id_tela']; ?>
                   <tr>
-                    <td><input class="form-control" form="<?= $fabricFormId ?>" name="name" value="<?= $e($fabric['nombre']) ?>" required></td>
-                    <td><input class="form-control" form="<?= $fabricFormId ?>" name="description" value="<?= $e($fabric['descripcion'] ?? '') ?>"></td>
-                    <td><label class="form-check"><input class="form-check-input" form="<?= $fabricFormId ?>" name="active" type="checkbox" <?= ((int) $fabric['activo'] === 1) ? 'checked' : '' ?>> Activa</label></td>
-                    <td>
+                    <td data-label="Tela"><input class="form-control" form="<?= $fabricFormId ?>" name="name" value="<?= $e($fabric['nombre']) ?>" required></td>
+                    <td data-label="Descripción"><input class="form-control" form="<?= $fabricFormId ?>" name="description" value="<?= $e($fabric['descripcion'] ?? '') ?>"></td>
+                    <td data-label="Estado"><label class="form-check"><input class="form-check-input" form="<?= $fabricFormId ?>" name="active" type="checkbox" <?= ((int) $fabric['activo'] === 1) ? 'checked' : '' ?>> Activa</label></td>
+                    <td data-label="Acciones">
                       <div class="d-flex justify-content-end gap-2">
                         <form id="<?= $fabricFormId ?>" method="post" action="/admin/telas/<?= (int) $fabric['id_tela'] ?>/editar"></form>
                         <button class="btn btn-light btn-icon" form="<?= $fabricFormId ?>" type="submit" title="Guardar"><i class="bi bi-check2"></i></button>
@@ -344,13 +344,13 @@ $isActive = fn($module) => $activeModule === $module ? 'active' : '';
                   <?php $colorFormId = 'color-form-' . (int) $color['id_color']; ?>
                   <?php $hasVisualColor = !empty($color['codigo_hex']); ?>
                   <tr>
-                    <td><input class="form-control" form="<?= $colorFormId ?>" name="name" value="<?= $e($color['nombre']) ?>" required></td>
-                    <td class="color-edit-cell">
+                    <td data-label="Color"><input class="form-control" form="<?= $colorFormId ?>" name="name" value="<?= $e($color['nombre']) ?>" required></td>
+                    <td class="color-edit-cell" data-label="Muestra">
                       <input class="form-control form-control-color" form="<?= $colorFormId ?>" name="hex" type="color" value="<?= $e($color['codigo_hex'] ?: '#d8c6ad') ?>">
                       <label class="form-check"><input class="form-check-input" form="<?= $colorFormId ?>" name="use_hex" type="checkbox" <?= $hasVisualColor ? 'checked' : '' ?>> Usar</label>
                     </td>
-                    <td><label class="form-check"><input class="form-check-input" form="<?= $colorFormId ?>" name="active" type="checkbox" <?= ((int) $color['activo'] === 1) ? 'checked' : '' ?>> Activo</label></td>
-                    <td>
+                    <td data-label="Estado"><label class="form-check"><input class="form-check-input" form="<?= $colorFormId ?>" name="active" type="checkbox" <?= ((int) $color['activo'] === 1) ? 'checked' : '' ?>> Activo</label></td>
+                    <td data-label="Acciones">
                       <div class="d-flex justify-content-end gap-2">
                         <form id="<?= $colorFormId ?>" method="post" action="/admin/colores/<?= (int) $color['id_color'] ?>/editar"></form>
                         <button class="btn btn-light btn-icon" form="<?= $colorFormId ?>" type="submit" title="Guardar"><i class="bi bi-check2"></i></button>
@@ -404,10 +404,10 @@ $isActive = fn($module) => $activeModule === $module ? 'active' : '';
               <tbody>
                 <?php foreach ($fabricColors as $fabricColor): ?>
                   <tr>
-                    <td><?= $e($fabricColor['tela']) ?></td>
-                    <td><span class="color-pill"><?php if (!empty($fabricColor['codigo_hex'])): ?><i style="background: <?= $e($fabricColor['codigo_hex']) ?>"></i><?php endif; ?><?= $e($fabricColor['color']) ?></span></td>
-                    <td><span class="badge rounded-pill <?= ((int) $fabricColor['disponible'] === 1) ? 'text-bg-success-subtle' : 'text-bg-secondary' ?>"><?= ((int) $fabricColor['disponible'] === 1) ? 'Disponible' : 'Inactiva' ?></span></td>
-                    <td>
+                    <td data-label="Tela"><?= $e($fabricColor['tela']) ?></td>
+                    <td data-label="Color"><span class="color-pill"><?php if (!empty($fabricColor['codigo_hex'])): ?><i style="background: <?= $e($fabricColor['codigo_hex']) ?>"></i><?php endif; ?><?= $e($fabricColor['color']) ?></span></td>
+                    <td data-label="Estado"><span class="badge rounded-pill <?= ((int) $fabricColor['disponible'] === 1) ? 'text-bg-success-subtle' : 'text-bg-secondary' ?>"><?= ((int) $fabricColor['disponible'] === 1) ? 'Disponible' : 'Inactiva' ?></span></td>
+                    <td data-label="Acciones">
                       <div class="d-flex justify-content-end">
                         <?php if ((int) $fabricColor['disponible'] === 1): ?>
                           <form method="post" action="/admin/tela-colores/<?= (int) $fabricColor['id_tela_color'] ?>/eliminar" onsubmit="return confirm('¿Desactivar esta combinación?');">
@@ -448,12 +448,12 @@ $isActive = fn($module) => $activeModule === $module ? 'active' : '';
                 <?php foreach ($users as $user): ?>
                   <?php $userFormId = 'user-form-' . (int) $user['id_usuario']; ?>
                   <tr>
-                    <td><input class="form-control" form="<?= $userFormId ?>" name="name" value="<?= $e($user['nombre']) ?>" required></td>
-                    <td><input class="form-control" form="<?= $userFormId ?>" name="email" type="email" value="<?= $e($user['email']) ?>" required></td>
-                    <td><input class="form-control" form="<?= $userFormId ?>" name="username" value="<?= $e($user['usuario']) ?>" required></td>
-                    <td><select class="form-select" form="<?= $userFormId ?>" name="role_id" required><?php foreach ($roles as $role): ?><option value="<?= (int) $role['id_rol'] ?>" <?= (int) $role['id_rol'] === (int) $user['id_rol'] ? 'selected' : '' ?>><?= $e($role['nombre']) ?></option><?php endforeach; ?></select></td>
-                    <td><label class="form-check"><input class="form-check-input" form="<?= $userFormId ?>" name="active" type="checkbox" <?= ((int) $user['activo'] === 1) ? 'checked' : '' ?>> Activo</label></td>
-                    <td>
+                    <td data-label="Nombre"><input class="form-control" form="<?= $userFormId ?>" name="name" value="<?= $e($user['nombre']) ?>" required></td>
+                    <td data-label="Email"><input class="form-control" form="<?= $userFormId ?>" name="email" type="email" value="<?= $e($user['email']) ?>" required></td>
+                    <td data-label="Usuario"><input class="form-control" form="<?= $userFormId ?>" name="username" value="<?= $e($user['usuario']) ?>" required></td>
+                    <td data-label="Rol"><select class="form-select" form="<?= $userFormId ?>" name="role_id" required><?php foreach ($roles as $role): ?><option value="<?= (int) $role['id_rol'] ?>" <?= (int) $role['id_rol'] === (int) $user['id_rol'] ? 'selected' : '' ?>><?= $e($role['nombre']) ?></option><?php endforeach; ?></select></td>
+                    <td data-label="Estado"><label class="form-check"><input class="form-check-input" form="<?= $userFormId ?>" name="active" type="checkbox" <?= ((int) $user['activo'] === 1) ? 'checked' : '' ?>> Activo</label></td>
+                    <td data-label="Acciones">
                       <div class="d-flex justify-content-end gap-2">
                         <form id="<?= $userFormId ?>" method="post" action="/admin/usuarios/<?= (int) $user['id_usuario'] ?>/editar"></form>
                         <button class="btn btn-light btn-icon" form="<?= $userFormId ?>" type="submit" title="Guardar"><i class="bi bi-check2"></i></button>

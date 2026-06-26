@@ -61,7 +61,8 @@ if (scrollTopButton) {
     const nearFooter = footerNode
       ? footerNode.getBoundingClientRect().top < window.innerHeight * 1.25
       : false;
-    const shouldShow = window.scrollY > 600 || nearFooter;
+    const hasScrolledEnough = window.scrollY > 320;
+    const shouldShow = hasScrolledEnough || (window.scrollY > 80 && nearFooter);
     scrollTopButton.classList.toggle('is-visible', shouldShow);
   };
 

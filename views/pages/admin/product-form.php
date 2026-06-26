@@ -19,7 +19,7 @@ $currentImage = trim((string) ($product['imagen'] ?? ''));
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="stylesheet" href="/css/admin.css?v=<?= filemtime(__DIR__ . '/../../../public/css/admin.css') ?>" />
 </head>
 <body class="admin-body">
   <div class="admin-app">
@@ -39,6 +39,9 @@ $currentImage = trim((string) ($product['imagen'] ?? ''));
 
     <main class="admin-main">
       <header class="admin-header">
+        <button class="btn btn-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileAdminNav" aria-controls="mobileAdminNav" aria-label="Abrir navegación">
+          <i class="bi bi-list"></i>
+        </button>
         <div>
           <p class="admin-kicker">Catálogo</p>
           <h1><?= $e($title) ?></h1>
@@ -50,6 +53,22 @@ $currentImage = trim((string) ($product['imagen'] ?? ''));
           </form>
         </div>
       </header>
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileAdminNav" aria-labelledby="mobileAdminNavLabel">
+        <div class="offcanvas-header">
+          <h5 id="mobileAdminNavLabel">Tapisur</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+        <div class="offcanvas-body admin-nav">
+          <a href="/admin/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
+          <a href="/admin/productos" class="active"><i class="bi bi-box-seam"></i> Productos</a>
+          <a href="/admin/telas"><i class="bi bi-layers"></i> Telas</a>
+          <a href="/admin/colores"><i class="bi bi-palette"></i> Colores</a>
+          <a href="/admin/combinaciones"><i class="bi bi-diagram-3"></i> Combinaciones</a>
+          <a href="/admin/usuarios"><i class="bi bi-people"></i> Usuarios</a>
+          <a href="/admin/configuracion"><i class="bi bi-gear"></i> ConfiguraciÃ³n</a>
+        </div>
+      </div>
 
       <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><i class="bi bi-exclamation-triangle"></i> <?= $e($error) ?></div>
@@ -172,5 +191,6 @@ $currentImage = trim((string) ($product['imagen'] ?? ''));
       renderPreview(file);
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
